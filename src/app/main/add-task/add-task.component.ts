@@ -10,6 +10,10 @@ import { TaskService } from '../../services/service';
 export class AddTaskComponent {
   task = new Task();
   constructor(private service: TaskService) {
-    
+
+  }
+
+  addTask(): void {
+    this.service.addTask(this.task);
   }
 }

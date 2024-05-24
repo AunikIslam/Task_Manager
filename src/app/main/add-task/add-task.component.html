@@ -1,11 +1,11 @@
 <div class="parent">
   <div class="page-title">Add New Task</div>
-  <form #form="ngForm">
+  <form #form="ngForm"  (ngSubmit)="addTask()">
       <div>
         <div class="input-field-title">Task Name</div>
         <input class="input-field" name="name" [(ngModel)]="task.name"/>
       </div>
-      <button class="button">
+      <button class="button" type="submit">
         Add Task
       </button>
   </form>
