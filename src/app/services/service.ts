@@ -14,6 +14,10 @@ import { Task } from "../dto/task";
     private taskSubject = new BehaviorSubject(Task);
     sharedTaskSubject = this.taskSubject.asObservable();
 
+    getTasks() {
+      return this.tasksListSubject.asObservable();
+    }
+
 
     addTask(pTask: Task): void {
         const tasks = [...this.tasksListSubject.value, pTask]
