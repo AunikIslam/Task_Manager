@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../dto/task';
 @Component({
-  selector: 'app-task-item',
+  selector: 'task-item',
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css'
 })

@@ -8,7 +8,7 @@ import { Task } from "../dto/task";
 
   export class TaskService {
     tasks: Task[] = [];
-    private tasksListSubject = new BehaviorSubject(this.tasks);
+    private tasksListSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.getTasksFromLocalStorage());
     sharedTaskList = this.tasksListSubject.asObservable();
 
     private taskSubject = new BehaviorSubject(Task);
@@ -16,6 +16,11 @@ import { Task } from "../dto/task";
 
     getTasks() {
       return this.tasksListSubject.asObservable();
+    }
+
+    getTasksFromLocalStorage(): Task[] {
+      const tasks = localStorage.getItem('tasks');
+      return tasks ? JSON.parse(tasks) : [];
     }
 
 

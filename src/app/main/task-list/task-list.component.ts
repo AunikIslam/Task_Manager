@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent {
-  tasks$: Task[] = [];
+  tasks: any;
 
   constructor(private taskService: TaskService) {
     this.taskService.sharedTaskList.subscribe(pTasks => {
-      console.log(pTasks);
+      this.tasks = pTasks;
     })
     
   }
