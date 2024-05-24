@@ -2,6 +2,17 @@
     <div class="container">
         <button [routerLink]="[ '/add-task']" class="button">Add Task</button>
     </div>
+    <div style="overflow-x: auto; width: 100%">
+        <table class="data-table" cellspacing="0">
+            <thead>
+            <tr>
+                <th class="text-left pl-12">Task Name</th>
+                <th class="text-left">Completed?</th>
+                <th class="text-left">Delete</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
     <div>
         @for (item of tasks; track item) {
             <task-item [task]="item"></task-item>

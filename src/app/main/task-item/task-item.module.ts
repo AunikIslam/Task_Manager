@@ -15,7 +15,7 @@ import { TaskItemComponent } from './task-item.component';
     SharedModule,
   ],
   exports: [
-    TaskItemComponent
+    
   ]
 })
 export class TaskItemModule {}
