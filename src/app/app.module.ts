@@ -6,22 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { TaskItemComponent } from './main/task-item/task-item.component';
 const routes: Routes = [
-  {
-    path: 'add-task',
-    loadChildren: () =>
-      import('./main/add-task/add-task.module').then((m) => m.AddTaskModule),
-  },
   {
     path: 'task-item',
     loadChildren: () =>
       import('./main/task-item/task-item.module').then((m) => m.TaskItemModule),
+  },
+  {
+    path: 'add-task',
+    loadChildren: () =>
+      import('./main/add-task/add-task.module').then((m) => m.AddTaskModule),
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskItemComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     HttpClientModule,
