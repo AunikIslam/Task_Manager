@@ -44,4 +44,14 @@ import { Task } from "../dto/task";
       this.taskListSubject.next(tasks);
       this.saveTasksToLocalStorage(tasks);
     }
+
+    filterTask(pStatus: any) {
+      const tasks = this.getTasksFromLocalStorage();
+      if (pStatus == true || pStatus == false) {
+        const filteredTasks = tasks.filter(pTask => pTask.completed == pStatus);
+        this.taskListSubject.next(filteredTasks);
+      } else {
+        this.taskListSubject.next(tasks);
+      }
+    }
   }

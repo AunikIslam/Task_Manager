@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/service';
-import { Observable } from 'rxjs';
 import { Task } from '../../dto/task';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-task-list',
@@ -26,5 +26,9 @@ export class TaskListComponent {
 
   deleteTask(taskId: string) {
     this.taskService.deleteTask(taskId);
+  }
+
+  filterTasks(pEvent: MatSelectChange): void {
+    this.taskService.filterTask(pEvent.value);
   }
 }

@@ -1,5 +1,5 @@
 <div class="task-item-list child">
     <div>{{ task.name }}</div>
     <div><input class="checkbox" type="checkbox" [checked]="task.completed" (change)="changeStatus()"></div>
-    <div><button class="button" (click)="removeTask()">Delete</button></div>
+    <div><button mat-flat-button color="warn" (click)="removeTask()">Delete</button></div>
 </div>

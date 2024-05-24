@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { TaskListComponent } from './main/task-list/task-list.component';
 import { TaskListModule } from './main/task-list/task-list.module';
 import { TaskItemComponent } from './main/task-item/task-item.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
+
 const routes: Routes = [
   {
     path: 'task-item',
@@ -35,6 +40,9 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent],
