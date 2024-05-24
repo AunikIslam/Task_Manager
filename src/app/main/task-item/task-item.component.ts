@@ -1,14 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Task } from '../../dto/task';
 @Component({
   selector: 'task-item',
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css'
 })
-export class TaskItemComponent {
+export class TaskItemComponent implements OnChanges {
   @Input() task!: Task;
   @Output() updateStatus = new EventEmitter<Task>();
   @Output() deleteTask = new EventEmitter<number>();
+
+  ngOnChanges() {
+    console.log('Task received:', this.task);
+  }
 
   changeStatus(): void {
     this.task.completed = !this.task.completed;

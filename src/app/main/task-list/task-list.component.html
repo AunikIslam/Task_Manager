@@ -4,8 +4,8 @@
     </div>
 </div>
 <div>
-    @for (item of tasks; track item) {
-        <task-item></task-item>
+    @for (task of tasks; track task) {
+        <task-item [task]="task"></task-item>
         }
        @empty {
        // optional block to be displayed when collection is empty
