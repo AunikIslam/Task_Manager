@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { TaskListComponent } from './main/task-list/task-list.component';
 const routes: Routes = [
   {
     path: 'task-item',
@@ -16,11 +17,16 @@ const routes: Routes = [
     path: 'add-task',
     loadChildren: () =>
       import('./main/add-task/add-task.module').then((m) => m.AddTaskModule),
+  },
+  {
+    path: 'task-list',
+    loadChildren: () =>
+      import('./main/task-list/task-list.module').then((m) => m.TaskListModule),
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TaskListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
