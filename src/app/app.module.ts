@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'add-task',
     loadChildren: () =>
       import('./main/add-task/add-task.module').then((m) => m.AddTaskModule),
+  },
+  {
+    path: 'task-item',
+    loadChildren: () =>
+      import('./main/task-item/task-item.module').then((m) => m.TaskItemModule),
   }
 ];
 
