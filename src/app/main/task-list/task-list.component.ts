@@ -13,6 +13,7 @@ export class TaskListComponent {
   constructor(private taskService: TaskService) {
     this.taskService.sharedTaskList.subscribe(pTasks => {
       this.tasks = pTasks;
+      console.log(this.tasks);
     })
     
   }
