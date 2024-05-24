@@ -2,24 +2,18 @@
     <div class="container">
         <button [routerLink]="[ '/add-task']" class="button">Add Task</button>
     </div>
-    <div style="overflow-x: auto; width: 100%">
-        <table class="data-table" cellspacing="0">
-            <thead>
-            <tr>
-                <th class="text-left pl-12">Task Name</th>
-                <th class="text-left">Completed?</th>
-                <th class="text-left">Delete</th>
-            </tr>
-            </thead>
-        </table>
+    <div class="task-item-list header">
+        <div>Task Name</div>
+        <div>Completed?</div>
+        <div>Delete</div>
     </div>
-    <div>
-        @for (item of tasks; track item) {
-            <task-item [task]="item"></task-item>
-            }
-           @empty {
-           // optional block to be displayed when collection is empty
-           }
-    </div>
+    @for (item of tasks; track item) {
+        <task-item [task]="item"></task-item>
+        }
+       @empty {
+        <div class="task-item-list header">
+            <div>No task available!</div>
+        </div>
+       }
 </div>
 

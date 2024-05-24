@@ -32,42 +32,31 @@
     border-radius: 5px;
     background-color: dodgerblue;
     color: white;
+    border: 2px solid black;
     cursor: pointer;
   }
 
-  .data-table {
-    border: 2px solid #efefef;
-    border-radius: 10px;
-    font-size: 13px;
+  .task-item-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-    thead tr {
-        background-color: #f5f5f5;
-        height: 50px;
-    }
+  .header {
+    background-color: #f5f5f5;
+    height: 50px;
+    font-weight: 600;
+  }
 
-    thead tr th {
-        padding: 0 5px;
-        white-space: nowrap;
-    }
+  .child {
+    padding: 5px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #efefef;
+  }
 
-    thead {
-        tr:first-child th:first-child {
-            border-top-left-radius: 10px;
-        }
-
-        tr:first-child th:last-child {
-            border-top-right-radius: 10px;
-        }
-    }
-
-    tbody tr {
-        height: 40px;
-    }
-
-    tbody tr td {
-        padding: 0 5px;
-        background-color: #ffffff;
-        border-bottom: 2px solid #efefef;
-    }
+  .checkbox {
+    height: 20px;
+    width: 20px;
   }
 }
