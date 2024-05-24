@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   constructor(private router: Router) {
-    this.router.navigate(['task-add']);
+    this.router.navigate(['add-task']);
   }
 
   ngOnInit() {
