@@ -26,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     HttpClientModule,

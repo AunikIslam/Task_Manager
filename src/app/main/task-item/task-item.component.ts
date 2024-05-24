@@ -10,7 +10,7 @@ export class TaskItemComponent {
   @Output() updateStatus = new EventEmitter<Task>();
   @Output() deleteTask = new EventEmitter<number>();
 
-  changeStauts(): void {
+  changeStatus(): void {
     this.task.completed = !this.task.completed;
     this.updateStatus.emit(this.task);
   }
