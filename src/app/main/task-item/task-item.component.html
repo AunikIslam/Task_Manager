@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="task">
     <input type="checkbox" [checked]="task.completed" (change)="changeStatus()">
     <span>{{ task.name }}</span>
     <button class="button" (click)="removeTask()">Delete</button>
