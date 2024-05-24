@@ -5,7 +5,7 @@ import { TaskListComponent } from './task-list.component';
 import { TaskItemModule } from '../task-item/task-item.module';
 
 @NgModule({
-  declarations: [TaskListComponent],
+  declarations: [],
   imports: [
     RouterModule.forChild([
       {
@@ -13,8 +13,7 @@ import { TaskItemModule } from '../task-item/task-item.module';
         component: TaskListComponent,
       },
     ]),
-    SharedModule,
-    TaskItemModule
+    SharedModule
   ],
 })
 export class TaskListModule {}

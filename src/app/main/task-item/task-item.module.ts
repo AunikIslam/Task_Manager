@@ -4,7 +4,7 @@ import { SharedModule } from '../../shared-module';
 import { TaskItemComponent } from './task-item.component';
 
 @NgModule({
-  declarations: [TaskItemComponent],
+  declarations: [],
   imports: [
     RouterModule.forChild([
       {
