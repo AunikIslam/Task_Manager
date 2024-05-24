@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared-module';
 import { TaskItemComponent } from './task-item.component';
-import { SharedModule } from '../../../shared-module';
 
 @NgModule({
   declarations: [TaskItemComponent],
