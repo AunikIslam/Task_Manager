@@ -1,14 +1,4 @@
 <div class="parent">
-    <div class="container">
-        <button [routerLink]="[ '/add-task']" class="button">Add Task</button>
-    </div>
-    <div>
-        @for (task of tasks; track task) {
-            <task-item [task]="task"></task-item>
-            }
-           @empty {
-           // optional block to be displayed when collection is empty
-           }
-    </div>
+    <button [routerLink]="[ '/add-task']" class="button">Add Task</button>
 </div>
 
