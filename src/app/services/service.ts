@@ -7,7 +7,6 @@ import { Task } from "../dto/task";
   })
 
   export class TaskService {
-    tasks: Task[] = [];
     private taskListSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.getTasksFromLocalStorage());
     sharedTaskList = this.taskListSubject.asObservable();
 
@@ -35,7 +34,7 @@ import { Task } from "../dto/task";
     }
 
     updateTask(task: Task) {
-      const tasks = this.taskListSubject.value.map(t => t.id === task.id ? task : t);
+      const tasks = this.taskListSubject.value.map(pTask => pTask.id === task.id ? task : pTask);
       this.taskListSubject.next(tasks);
       this.saveTasksToLocalStorage(tasks);
     }

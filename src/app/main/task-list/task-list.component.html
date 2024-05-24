@@ -8,7 +8,7 @@
         <div>Delete</div>
     </div>
     @for (item of tasks; track item) {
-        <task-item [task]="item" (updateStatus)="updateTask(item)"></task-item>
+        <task-item [task]="item" (updateStatus)="updateTask(item)" (deleteTask)="deleteTask(item.id)"></task-item>
         }
        @empty {
         <div class="task-item-list child">

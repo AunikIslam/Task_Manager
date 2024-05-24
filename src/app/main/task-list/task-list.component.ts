@@ -21,10 +21,10 @@ export class TaskListComponent {
   ngOnInit(): void {}
 
   updateTask(task: Task) {
-    // this.taskService.updateTask(task);
+    this.taskService.updateTask(task);
   }
 
-  onTaskDeleted(taskId: string) {
+  deleteTask(taskId: string) {
     this.taskService.deleteTask(taskId);
   }
 }
