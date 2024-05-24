@@ -1,14 +1,13 @@
 <div class="parent">
   <div class="page-title">Add New Task</div>
-  <form #form="ngForm" fxLayoutGap="20px">
+  <form #form="ngForm">
       <div>
         <div class="input-field-title">Task Name</div>
-        <input class="input-field" name="name"/>
+        <input class="input-field" name="name" [(ngModel)]="task.name"/>
       </div>
-      <div>
-        <div class="input-field-title">Description</div>
-        <input class="input-field" name="name"/>
-      </div>
+      <button class="button">
+        Add Task
+      </button>
   </form>
   
 </div>
