@@ -6,11 +6,12 @@ import { Task } from '../../dto/task';
   styleUrl: './task-item.component.css'
 })
 export class TaskItemComponent implements OnChanges {
-  @Input() task!: Task;
+  @Input() task: any;
   @Output() updateStatus = new EventEmitter<Task>();
   @Output() deleteTask = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
     if (changes['task']) {
       console.log('Task received:', this.task);
     }

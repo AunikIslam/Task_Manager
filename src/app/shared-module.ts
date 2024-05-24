@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TaskItemModule } from './main/task-item/task-item.module';
 
 @NgModule({
   declarations: [],

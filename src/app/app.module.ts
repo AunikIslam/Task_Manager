@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './main/task-list/task-list.component';
+import { TaskListModule } from './main/task-list/task-list.module';
+import { TaskItemParentComponent } from './task-item-parent/task-item-parent.component';
 const routes: Routes = [
   {
     path: 'task-item',
@@ -22,17 +24,23 @@ const routes: Routes = [
     path: 'task-list',
     loadChildren: () =>
       import('./main/task-list/task-list.module').then((m) => m.TaskListModule),
+  },
+  {
+    path: 'task-parent-list',
+    loadChildren: () =>
+      import('./task-item-parent/task-item.module').then((m) => m.TaskItemParentModule),
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TaskItemParentComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    TaskListModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent],
