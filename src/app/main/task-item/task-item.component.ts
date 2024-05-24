@@ -5,17 +5,10 @@ import { Task } from '../../dto/task';
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css'
 })
-export class TaskItemComponent implements OnChanges {
+export class TaskItemComponent {
   @Input() task: any;
   @Output() updateStatus = new EventEmitter<Task>();
   @Output() deleteTask = new EventEmitter<number>();
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-    if (changes['task']) {
-      console.log('Task received:', this.task);
-    }
-  }
 
   changeStatus(): void {
     this.task.completed = !this.task.completed;

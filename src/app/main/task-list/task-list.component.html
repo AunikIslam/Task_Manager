@@ -8,10 +8,10 @@
         <div>Delete</div>
     </div>
     @for (item of tasks; track item) {
-        <task-item [task]="item"></task-item>
+        <task-item [task]="item" (updateStatus)="updateTask(item)"></task-item>
         }
        @empty {
-        <div class="task-item-list header">
+        <div class="task-item-list child">
             <div>No task available!</div>
         </div>
        }

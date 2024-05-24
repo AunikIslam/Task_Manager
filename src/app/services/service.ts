@@ -8,14 +8,14 @@ import { Task } from "../dto/task";
 
   export class TaskService {
     tasks: Task[] = [];
-    private tasksListSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.getTasksFromLocalStorage());
-    sharedTaskList = this.tasksListSubject.asObservable();
+    private taskListSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.getTasksFromLocalStorage());
+    sharedTaskList = this.taskListSubject.asObservable();
 
     private taskSubject = new BehaviorSubject(Task);
     sharedTaskSubject = this.taskSubject.asObservable();
 
     getTasks() {
-      return this.tasksListSubject.asObservable();
+      return this.taskListSubject.asObservable();
     }
 
     getTasksFromLocalStorage(): Task[] {
@@ -23,10 +23,26 @@ import { Task } from "../dto/task";
       return tasks ? JSON.parse(tasks) : [];
     }
 
+    saveTasksToLocalStorage(tasks: Task[]): void {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
 
     addTask(pTask: Task): void {
-        const tasks = [...this.tasksListSubject.value, pTask]
-        this.tasksListSubject.next(tasks);
+        const tasks = [...this.taskListSubject.value, new Task(pTask)]
+        this.taskListSubject.next(tasks);
         localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+
+    updateTask(task: Task) {
+      const tasks = this.taskListSubject.value.map(t => t.id === task.id ? task : t);
+      this.taskListSubject.next(tasks);
+      this.saveTasksToLocalStorage(tasks);
+    }
+  
+    deleteTask(taskId: string) {
+      const tasks = this.taskListSubject.value.filter(t => t.id !== taskId);
+      this.taskListSubject.next(tasks);
+      this.saveTasksToLocalStorage(tasks);
     }
   }

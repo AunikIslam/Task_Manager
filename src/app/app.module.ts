@@ -35,7 +35,6 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    TaskListModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent],

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AddTaskComponent } from './add-task.component';
 import { SharedModule } from '../../shared-module';
-// import { SharedModule } from '../../shared-module';
 
 @NgModule({
   declarations: [AddTaskComponent],
@@ -13,7 +12,7 @@ import { SharedModule } from '../../shared-module';
         component: AddTaskComponent,
       },
     ]),
-    SharedModule,
+    SharedModule
   ],
 })
 export class AddTaskModule {}
