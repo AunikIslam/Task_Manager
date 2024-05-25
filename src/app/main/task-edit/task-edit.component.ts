@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from '../../dto/task';
+import { TaskService } from '../../services/service';
 
 @Component({
   selector: 'app-task-edit',
@@ -9,17 +10,23 @@ import { Task } from '../../dto/task';
 })
 export class TaskEditComponent {
   task = new Task();
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private taskService: TaskService) {
 
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      console.log(params);
         if (params['id']) {
-            
+            this.task = this.taskService.getTaskDetails(params['id']);
         } else {
             console.log('log');
         }
     });
-}
+  }
+
+  editTask(): void {
+    this.taskService.updateTask(this.task);
+    this.router.navigate(['task-list']);
+  }
 }

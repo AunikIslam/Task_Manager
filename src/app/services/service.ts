@@ -54,4 +54,10 @@ import { Task } from "../dto/task";
         this.taskListSubject.next(tasks);
       }
     }
+
+    getTaskDetails(pId: string): Task {
+      const tasks = this.taskListSubject.value.filter(t => t.id == pId);
+      const filteredTasks = tasks.filter(pTask => pTask.id == pId);
+      return filteredTasks[0];
+    }
   }

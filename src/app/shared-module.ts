@@ -5,6 +5,8 @@ import { TaskItemModule } from './main/task-item/task-item.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -14,7 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [
     FormsModule,
@@ -22,7 +26,9 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   bootstrap: [],
 })

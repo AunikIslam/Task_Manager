@@ -7,13 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './main/task-list/task-list.component';
-import { TaskListModule } from './main/task-list/task-list.module';
 import { TaskItemComponent } from './main/task-item/task-item.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { TaskEditComponent } from './main/task-edit/task-edit.component';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -30,11 +29,16 @@ const routes: Routes = [
     path: 'task-list',
     loadChildren: () =>
       import('./main/task-list/task-list.module').then((m) => m.TaskListModule),
+  },
+  {
+    path: ':id',
+    loadChildren: () =>
+      import('./main/task-edit/task-edit.module').then((m) => m.TaskEditModule),
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, TaskItemComponent, TaskEditComponent],
+  declarations: [AppComponent, TaskListComponent, TaskItemComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -44,6 +48,8 @@ const routes: Routes = [
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent],
