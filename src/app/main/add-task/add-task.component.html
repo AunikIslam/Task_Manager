@@ -3,9 +3,9 @@
   <form #form="ngForm"  (ngSubmit)="addTask()">
       <div>
         <div class="input-field-title">Task Name</div>
-        <input class="input-field" name="name" [(ngModel)]="task.name"/>
+        <input required class="input-field" name="name" [(ngModel)]="task.name"/>
       </div>
-      <button mat-flat-button color="primary" style="margin-top: 10px;" type="submit">
+      <button [disabled]="form.invalid" mat-flat-button color="primary" style="margin-top: 10px;" type="submit">
         Add Task
       </button>
   </form>
