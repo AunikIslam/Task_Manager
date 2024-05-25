@@ -1,17 +1,17 @@
 <div class="task-item-list child">
     <div>{{ task.name }}</div>
-    <div><input class="checkbox" type="checkbox" [checked]="task.completed" (change)="changeStatus()"></div>
+    <div style="padding-left: 60px;"><input class="checkbox" type="checkbox" [checked]="task.completed" (change)="changeStatus()"></div>
     <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
+        <div [matMenuTriggerFor]="menu">
+            <button color="primary" mat-raised-button>Actions</button>
+        </div>
         <mat-menu #menu="matMenu">
         <button  (click)="removeTask()" mat-menu-item>
-            <span style="font-size: 12px">Delete</span>
+            <span>Delete</span>
         </button>
         <a [routerLink]="[ '/', task.id]">
             <button mat-menu-item>
-                <span style="font-size: 12px">Edit</span>
+                <span>Edit</span>
             </button>
         </a>
         </mat-menu>
