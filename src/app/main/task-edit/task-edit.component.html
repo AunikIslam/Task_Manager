@@ -1,0 +1,15 @@
+<div class="parent">
+    <div class="page-title">Edit Task</div>
+    <form #form="ngForm">
+        <div>
+          <div class="input-field-title">Task Name</div>
+          <input class="input-field" name="name" [(ngModel)]="task.name"/>
+        </div>
+        <button mat-flat-button color="primary" style="margin-top: 10px;" type="submit">
+          Add Task
+        </button>
+    </form>
+    
+  </div>
+  
+  

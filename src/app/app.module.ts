@@ -12,6 +12,7 @@ import { TaskItemComponent } from './main/task-item/task-item.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { TaskEditComponent } from './main/task-edit/task-edit.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, TaskItemComponent],
+  declarations: [AppComponent, TaskListComponent, TaskItemComponent, TaskEditComponent],
   imports: [
     CommonModule,
     HttpClientModule,
