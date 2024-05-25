@@ -39,8 +39,8 @@ import { Task } from "../dto/task";
       this.saveTasksToLocalStorage(tasks);
     }
   
-    deleteTask(taskId: string) {
-      const tasks = this.taskListSubject.value.filter(t => t.id !== taskId);
+    deleteTask(pId: string) {
+      const tasks = this.taskListSubject.value.filter(pTask => pTask.id !== pId);
       this.taskListSubject.next(tasks);
       this.saveTasksToLocalStorage(tasks);
     }
@@ -56,8 +56,12 @@ import { Task } from "../dto/task";
     }
 
     getTaskDetails(pId: string): Task {
-      const tasks = this.taskListSubject.value.filter(t => t.id == pId);
-      const filteredTasks = tasks.filter(pTask => pTask.id == pId);
-      return filteredTasks[0];
+      const tasks = this.taskListSubject.value.filter(pTask => pTask.id == pId);
+      return tasks[0];
+    }
+
+    isValidTaskId(pId: string): boolean {
+      const tasks = this.taskListSubject.value.filter(pTask => pTask.id == pId);
+      return tasks.length > 0;
     }
   }

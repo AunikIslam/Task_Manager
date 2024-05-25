@@ -16,11 +16,10 @@ export class TaskEditComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params);
         if (params['id']) {
             this.task = this.taskService.getTaskDetails(params['id']);
         } else {
-            console.log('log');
+            
         }
     });
   }

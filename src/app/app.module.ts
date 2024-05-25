@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthGuard } from './services/auth-guard';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     path: ':id',
     loadChildren: () =>
       import('./main/task-edit/task-edit.module').then((m) => m.TaskEditModule),
+      canActivate: [AuthGuard]
   }
 ];
 
