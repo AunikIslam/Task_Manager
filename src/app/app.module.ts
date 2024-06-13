@@ -11,13 +11,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginComponent } from './main/authentication/login/login.component';
 
 const routes: Routes = [
-
+    {
+      path: 'auth/login',
+      component: LoginComponent
+    }
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     CommonModule,
     HttpClientModule,
