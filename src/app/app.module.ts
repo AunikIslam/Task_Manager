@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -33,6 +33,7 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    LoginComponent,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
