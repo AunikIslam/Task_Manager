@@ -35,9 +35,9 @@
               formControlName="password"
             />
           </div>
-          <a [routerLink]="['/auth', 'sign-up']" class="open-account-text">
+          <!-- <a [routerLink]="['/auth', 'sign-up']" class="open-account-text">
             Don't have an account? Create one!
-          </a>
+          </a> -->
           <button click="login()" [ngStyle]="{ width: '50vw' }" [disabled]="loginForm.invalid" class="mt-4" mat-raised-button color="primary">Log In</button>
         </form>
       </div>

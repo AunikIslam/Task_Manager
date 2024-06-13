@@ -4,14 +4,12 @@ import {
   FormGroup,
   Validators,
   FormControl,
+  FormsModule,
 } from '@angular/forms';
 import { BaseService } from '../../../services/service';
-import { SharedModule } from '../../../shared-module';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [SharedModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './main/authentication/login/login.component';
+import { SharedModule } from './shared-module';
 
 const routes: Routes = [
     {
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -33,7 +34,7 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    LoginComponent,
+    SharedModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
