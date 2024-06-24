@@ -29,7 +29,6 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    this.login();
     for (let i = 0; i < this.originalText.length; i++) {
       setTimeout(() => {
         this.displayText += this.originalText[i];
@@ -37,7 +36,7 @@ export class LoginComponent {
     }
 
     this.loginForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       password: ['', Validators.required],
     });
   }

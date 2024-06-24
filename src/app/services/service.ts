@@ -19,7 +19,7 @@ export class BaseService {
   }
 
   fetchData(pNode: string, pSearchValue: any, pSearchField: string): Observable<any[]> {
-    return this.fireDatabase.list(pNode, ref => ref.equalTo(pSearchValue, pSearchField)).valueChanges();
+    return this.fireDatabase.list(pNode, ref => ref.orderByChild(pSearchField).equalTo(pSearchValue)).valueChanges();
   }
 
   login(): void {

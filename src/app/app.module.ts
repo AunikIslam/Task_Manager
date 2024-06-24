@@ -13,10 +13,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './main/authentication/login/login.component';
 import { SharedModule } from './shared-module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 const routes: Routes = [
     {
-      path: 'auth/login',
+      path: 'login',
       component: LoginComponent
     }
 ];
@@ -29,12 +32,9 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
     SharedModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
