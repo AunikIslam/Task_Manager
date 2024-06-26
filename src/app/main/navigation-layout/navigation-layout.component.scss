@@ -1,0 +1,12 @@
+.layout-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .toolbar {
+        background-color: white;
+        border-bottom: 2px solid #f6f7f8;
+        height: 50px;
+    }
+}
