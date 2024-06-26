@@ -16,7 +16,6 @@ import { SharedModule } from './shared-module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { NavigationLayoutComponent } from './main/navigation-layout/navigation-layout.component';
 
 const routes: Routes = [
     {
@@ -26,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NavigationLayoutComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     CommonModule,
     HttpClientModule,

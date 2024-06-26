@@ -1,0 +1,17 @@
+.layout-parent {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto;
+}
+
+.toolbar {
+    background-color: white;
+    border-bottom: 2px solid #ecedf0;
+    height: 40px;
+}
+
+.sidebar {
+    min-height: 100vh;
+    background-color: #f7f8f9;
+    border-right: 2px solid #ecedf0;
+}
