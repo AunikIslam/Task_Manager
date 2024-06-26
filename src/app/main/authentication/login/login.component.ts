@@ -34,6 +34,7 @@ export class LoginComponent {
         this.displayText += this.originalText[i];
       }, 120 * i);
     }
+    this.displayCursor();
 
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
