@@ -1,12 +1,17 @@
-.layout-parent {
+.parent-layout {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+}
+.toolbar {
+    background-color: white;
+    border-bottom: 2px solid #ecedf0;
+    height: 30px;
+    width: 100hw;
+}
 
-    .toolbar {
-        background-color: white;
-        border-bottom: 2px solid #f6f7f8;
-        height: 50px;
-    }
+.sidebar {
+    width: 50px;
+    height: 100vh;
+    background-color: #f7f8f9;
+    border-right: 2px solid #ecedf0;
 }

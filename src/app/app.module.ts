@@ -26,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, NavigationLayoutComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -36,7 +36,6 @@ const routes: Routes = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    NavigationLayoutComponent,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
