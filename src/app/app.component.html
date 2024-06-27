@@ -4,7 +4,7 @@
         <div class="children">Dashboard</div>
         <div class="children">
             <div>Organizations</div>
-            <div class="icon">&#x002B;</div>
+            <div (click)="openOrganizationManageModal(); $event.stopPropagation()" class="icon">&#x002B;</div>
         </div>
         <div class="children">Users</div>
     </div>
@@ -13,6 +13,8 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+
+<organization-manage [shouldAddWindowOpen]="shouldOrgAddWindowOpen"></organization-manage>
 
 <div *ngIf="showToolbar == false">
     <router-outlet></router-outlet>

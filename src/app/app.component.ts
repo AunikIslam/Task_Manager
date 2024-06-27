@@ -9,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
 
   showToolbar = false;
+  shouldOrgAddWindowOpen = false;
 
   constructor(private router: Router) {
     
@@ -24,6 +25,13 @@ export class AppComponent implements OnInit {
         }
       }
     });
+  }
+
+  openOrganizationManageModal(): void {
+    this.shouldOrgAddWindowOpen = null;
+    setTimeout(() => {
+        this.shouldOrgAddWindowOpen = true;
+    }, 0);
   }
 
 }
