@@ -22,6 +22,10 @@ export class BaseService {
     return this.fireDatabase.list(pNode, ref => ref.orderByChild(pSearchField).equalTo(pSearchValue)).valueChanges();
   }
 
+  checkForExistingValue(): void {
+
+  }
+
   login(): void {
 
   }

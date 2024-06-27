@@ -7,6 +7,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { BaseService } from '../../../services/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent {
   cursor = '|';
   showLoginView = true;
 
-  constructor(private formBuilder: FormBuilder, private service: BaseService) {
+  constructor(private formBuilder: FormBuilder, private service: BaseService, private router: Router) {
     // this.service.googleSignUp()
   }
 
@@ -56,7 +57,9 @@ export class LoginComponent {
     this.service
       .fetchData('users', this.loginForm.get('userName').value, 'userName')
       .subscribe((pResponse) => {
-        console.log(pResponse);
+        if(pResponse[0].password == this.loginForm.get('password')) {
+          this.router.navigate(['dashboard']);
+        }
       });
   }
 }

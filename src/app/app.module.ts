@@ -16,16 +16,21 @@ import { SharedModule } from './shared-module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path: 'dashboard',
+      component: DashboardComponent
     }
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent],
   imports: [
     CommonModule,
     HttpClientModule,
