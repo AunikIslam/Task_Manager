@@ -17,6 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { OrganizationManageComponent } from './main/organization/organization-manage/organization-manage.component';
 
 const routes: Routes = [
     {
@@ -30,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent],
   imports: [
     CommonModule,
     HttpClientModule,
