@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   showToolbar = false;
 
   constructor(private router: Router) {
-    this.router.navigate(['login']);
+    
   }
 
   ngOnInit() {

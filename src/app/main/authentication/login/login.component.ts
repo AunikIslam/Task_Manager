@@ -57,7 +57,7 @@ export class LoginComponent {
     this.service
       .fetchData('users', this.loginForm.get('userName').value, 'userName')
       .subscribe((pResponse) => {
-        if(pResponse[0].password == this.loginForm.get('password')) {
+        if(pResponse[0].password == this.loginForm.get('password').value) {
           this.router.navigate(['dashboard']);
         }
       });

@@ -1,0 +1,12 @@
+.dashboard-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .card {
+        display: flex;
+        flex: 1 0 0;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #928f8f;
+    }
+}

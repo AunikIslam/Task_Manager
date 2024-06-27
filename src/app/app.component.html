@@ -1,5 +1,13 @@
 <div *ngIf="showToolbar" class="layout-parent">
-    <div class="sidebar"></div>
+    <div class="sidebar">
+        <div class="sidebar-header"></div>
+        <div class="children">Dashboard</div>
+        <div class="children">
+            <div>Organizations</div>
+            <div class="icon">&#x002B;</div>
+        </div>
+        <div class="children">Users</div>
+    </div>
     <div>
         <div class="toolbar"></div>
         <router-outlet></router-outlet>

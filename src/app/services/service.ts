@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable, from } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({ providedIn: 'root' })
@@ -22,11 +22,7 @@ export class BaseService {
     return this.fireDatabase.list(pNode, ref => ref.orderByChild(pSearchField).equalTo(pSearchValue)).valueChanges();
   }
 
-  checkForExistingValue(): void {
-
-  }
-
-  login(): void {
-
+  getNumberOfOrganizations(pNode: string): Observable<number> {
+    return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
   }
 }

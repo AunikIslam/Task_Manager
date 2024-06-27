@@ -50,3 +50,51 @@ a {
     }
   }
 }
+
+.layout-parent {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto;
+}
+
+.toolbar {
+  background-color: white;
+  border-bottom: 2px solid #ecedf0;
+  height: 40px;
+}
+
+.sidebar {
+  min-height: 100vh;
+  background-color: #f7f8f9;
+  border-right: 2px solid #ecedf0;
+
+  .sidebar-header {
+      border-bottom: 2px solid #ecedf0;
+      height: 40px;
+  }
+
+  .children {
+      padding: 8px 5px;
+      border-radius: 6px;
+      margin: 8px;
+      font-size: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .icon {
+          display: none;
+          color: black;
+          font-size: 16px;
+      }
+  }
+
+  .children:hover {
+      background-color: #e8eaed;
+      .icon {
+          display: block;
+          cursor: pointer;
+      }
+  }
+}
