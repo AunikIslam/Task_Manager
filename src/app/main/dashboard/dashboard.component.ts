@@ -15,8 +15,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.service.getNumberOfOrganizations('organizations').subscribe(pResponse => {
-    //   this.totalNumberOfOrganizations = pResponse;
-    // });
+    
+  }
+
+  getTotalNumberOfOrganizations(): void {
+    this.service.getNumberOfOrganizations('organizations').subscribe(pResponse => {
+      this.totalNumberOfOrganizations = pResponse;
+    });
   }
 }

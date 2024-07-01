@@ -20,7 +20,6 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.shouldAddWindowOpen) {
-      console.log('Called');
       const modal = document.getElementById('orgManageModal');
       modal.style.display = 'block';
     }

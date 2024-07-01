@@ -3,8 +3,9 @@
         <div class="sidebar-header"></div>
         <div class="children">Dashboard</div>
         <div class="children">
-            <div>Organizations</div>
-            <div (click)="openOrganizationManageModal(); $event.stopPropagation()" class="icon">&#x002B;</div>
+            <div>
+                <a [routerLink]="[ '/organizations' ]">Organizations</a>
+            </div>
         </div>
         <div class="children">Users</div>
     </div>
