@@ -1,1 +1,34 @@
+<div id="organizationAddModal" class="add-modal-outside" (click)="closeOrganizationWindow()" >
+    <div class="add-modal-v1" (click)="$event.stopPropagation()">
+        <div class="modal-close-box">
+            <div class="modal-close-button">
+                
+            </div>
+        </div>
 
+        <div class="add-modal-text font-size-16">
+            {{organization.id ? 'Edit Organization: ': 'Add New Organization'}}
+        </div>
+
+        <div class="search-container">
+            <input
+                class="input-field-large"
+                name="orgName"
+                [(ngModel)]="organization.name"
+                placeholder="Enter Organization Name"
+            />
+            <input
+                class="input-field-large"
+                name="phone"
+                [(ngModel)]="organization.phoneNumber"
+                placeholder="Enter Organization Phone"
+            />
+            <input
+                class="input-field-large"
+                name="phone"
+                [(ngModel)]="organization.address"
+                placeholder="Enter Address"
+            />
+        </div>
+    </div>
+</div>

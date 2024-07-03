@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Organization } from '../../../dto/organization';
 
 @Component({
   selector: 'organization-manage',
@@ -7,8 +8,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class OrganizationManageComponent implements OnInit, OnChanges {
 
-  @Input() shouldAddWindowOpen = false;
-
+  @Input() shouldOpenManageWindow = false;
+  @Input() organization = new Organization();
+  @Output() openConditionChangeListener = new EventEmitter<boolean>();
+  @Output() reloadData = new EventEmitter<boolean>();
 
   constructor(){
 
@@ -19,9 +22,16 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.shouldAddWindowOpen) {
-      const modal = document.getElementById('orgManageModal');
+    console.log(this.shouldOpenManageWindow);
+    if(this.shouldOpenManageWindow) {
+      const modal = document.getElementById('organizationAddModal');
       modal.style.display = 'block';
     }
   }
+
+  closeOrganizationWindow(): void {
+    this.openConditionChangeListener.emit();
+    const modal = document.getElementById('organizationAddModal');
+    modal.style.display = 'none';
+}
 }
