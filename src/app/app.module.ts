@@ -19,6 +19,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { OrganizationManageComponent } from './main/organization/organization-manage/organization-manage.component';
 import { OrganizationListComponent } from './main/organization/organization-list/organization-list.component';
+import { TaskListComponent } from './main/task/task-list/task-list.component';
+import { TaskManageComponent } from './main/task/task-manage/task-manage.component';
 
 const routes: Routes = [
     {
@@ -32,11 +34,16 @@ const routes: Routes = [
     {
       path: 'organizations',
       component: OrganizationListComponent
+    },
+    {
+      path: 'tasks',
+      component: TaskListComponent
     }
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent, 
+    TaskListComponent, TaskManageComponent],
   imports: [
     CommonModule,
     HttpClientModule,

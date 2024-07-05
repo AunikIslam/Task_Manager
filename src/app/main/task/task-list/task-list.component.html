@@ -1,0 +1,45 @@
+<div class="parent">
+    <div class="header-container" >
+        <div class="filter-icon-container" (click)="getTask(null)">
+            <div class="icon-filter-settings">&#43;</div>
+        </div>
+    </div>
+    <div style="overflow-x: auto; width: 100%">
+        <table class="data-table" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Organization</th>
+                    <th class="text-center">Assigned To</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @for (item of tasks; track item) {
+                        <tr>
+                            <td class="text-center">{{item.name}}</td>
+                            <td class="text-center">{{item.description}}</td>
+                            <td class="text-center">{{item.organization.orgName}}</td>
+                            <td class="text-center">
+                                @for (assigned of item.assignedTo; track item) {
+                                    <div>{{assigned.user.name}}</div>
+                                }
+                            </td>
+                            <td class="text-center">{{statusListEnum[item.status]}}</td>
+                            <td class="text-center">
+                                <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-flat-button (click)="getOrganization(item)">Edit</button>
+                            </mat-menu>
+                            </td>
+                        </tr>
+                        }
+                </tbody>
+        </table>
+    </div>
+    <task-manage
+    [shouldOpenManageWindow]="openManageWindow"
+    [organization]="organization"></task-manage>
+</div>

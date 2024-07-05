@@ -18,9 +18,8 @@ export class OrganizationListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getOrganizationsList('organizations').subscribe(pResponse => {
+    this.service.getDataList('organizations').subscribe(pResponse => {
       this.organizations = pResponse;
-      console.log(this.organizations);
     });
   }
 
@@ -32,5 +31,5 @@ export class OrganizationListComponent implements OnInit {
   updateWindowOpenCondition(): void {
     this.openOrganizationManageWindow = false;
     this.organization = new Organization();
-}
+  }
 }

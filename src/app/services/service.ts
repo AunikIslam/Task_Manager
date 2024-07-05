@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable, from, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Organization } from '../dto/organization';
+import { Task } from '../dto/task';
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
@@ -35,12 +36,33 @@ export class BaseService {
     );;
   }
 
+  getDataList(pNode: string): Observable<any[]> {
+    return this.fireDatabase.list(pNode).snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }))
+      )
+    );;
+  }
+
   addOrganization(pOrganization: Organization): Observable<any> {
-    return new Observable(observer => {
+    return new Observable(() => {
       this.fireDatabase.list('organizations').push({
         orgName: pOrganization.orgName,
         address: pOrganization.address,
         phoneNumber: pOrganization.phoneNumber
+      })
+    });
+  }
+
+  addTask(pTask: Task): Observable<any> {
+    return new Observable(() => {
+      this.fireDatabase.list('tasks').push({
+        name: pTask.name,
+        description: pTask.description,
+        organization: pTask.organization,
+        assignedTo: pTask.assignedTo,
+        assignedBy: pTask.assignedBy,
+        status: pTask.status
       })
     });
   }
