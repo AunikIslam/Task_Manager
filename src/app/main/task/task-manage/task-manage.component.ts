@@ -6,9 +6,9 @@ import { StatusEnum } from '../../../enums/task-status';
 import { User } from '../../../dto/user';
 
 @Component({
-  selector: 'app-task-manage',
+  selector: 'task-manage',
   templateUrl: './task-manage.component.html',
-  styleUrl: './task-manage.component.css'
+  styleUrl: './task-manage.component.scss'
 })
 export class TaskManageComponent implements OnInit, OnChanges {
 

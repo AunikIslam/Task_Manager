@@ -23,15 +23,15 @@
                             <td class="text-center">{{item.description}}</td>
                             <td class="text-center">{{item.organization.orgName}}</td>
                             <td class="text-center">
-                                @for (assigned of item.assignedTo; track item) {
-                                    <div>{{assigned.user.name}}</div>
+                                @for (assigned of item.assignedTo; track assigned) {
+                                    <div>{{assigned.name}}</div>
                                 }
                             </td>
-                            <td class="text-center">{{statusListEnum[item.status]}}</td>
+                            <td class="text-center"></td>
                             <td class="text-center">
                                 <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
                             <mat-menu #menu="matMenu">
-                                <button mat-flat-button (click)="getOrganization(item)">Edit</button>
+                                <button mat-flat-button (click)="getTask(item)">Edit</button>
                             </mat-menu>
                             </td>
                         </tr>
@@ -41,5 +41,5 @@
     </div>
     <task-manage
     [shouldOpenManageWindow]="openManageWindow"
-    [organization]="organization"></task-manage>
+    [task]="task"></task-manage>
 </div>

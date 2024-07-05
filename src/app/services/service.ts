@@ -61,7 +61,6 @@ export class BaseService {
         description: pTask.description,
         organization: pTask.organization,
         assignedTo: pTask.assignedTo,
-        assignedBy: pTask.assignedBy,
         status: pTask.status
       })
     });

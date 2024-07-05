@@ -1,4 +1,4 @@
-<div id="organizationAddModal" class="add-modal-outside" (click)="closeOrganizationWindow()" >
+<div id="taskAddModal" class="add-modal-outside" (click)="closeOrganizationWindow()" >
     <div class="add-modal-v1" (click)="$event.stopPropagation()">
         <div class="modal-close-box">
             <div class="modal-close-button">
@@ -23,7 +23,7 @@
                 [(ngModel)]="task.description"
                 placeholder="Enter Description"
             />
-            <mat-form-field fxFlex="100">
+            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
                 <mat-select placeholder="AssignedTo" name="AssignedList" [(ngModel)]="task.assignedTo" multiple>
                     <mat-option *ngFor="let user of users" [value]="user">
                         {{user.name}}
@@ -32,14 +32,15 @@
                 <mat-error>Year is required!</mat-error>
             </mat-form-field>
 
-            <mat-form-field fxFlex="100">
+            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
                 <mat-select placeholder="Status" name="status" [(ngModel)]="task.status">
-                    <mat-option *ngFor="let status of statusList" [value]="status.key">
-                        {{status.value}}
+                    <mat-option *ngFor="let status of statusList" [value]="status.value">
+                        {{status.title}}
                     </mat-option>
                 </mat-select>
                 <mat-error>Year is required!</mat-error>
             </mat-form-field>
+
             <div class="button" (click)="createOrganization()">Add</div>
         </div>
     </div>
