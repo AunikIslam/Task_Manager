@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Organization } from '../../../dto/organization';
+import { BaseService } from '../../../services/service';
 
 @Component({
   selector: 'organization-manage',
@@ -13,7 +14,7 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
 
-  constructor(){
+  constructor(private service: BaseService){
 
   }
 
@@ -22,7 +23,6 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.shouldOpenManageWindow);
     if(this.shouldOpenManageWindow) {
       const modal = document.getElementById('organizationAddModal');
       modal.style.display = 'block';
@@ -33,5 +33,10 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
     this.openConditionChangeListener.emit();
     const modal = document.getElementById('organizationAddModal');
     modal.style.display = 'none';
-}
+  }
+
+  createOrganization(): void {
+    this.service.addOrganization(this.organization).subscribe(() => {
+    });
+  }
 }

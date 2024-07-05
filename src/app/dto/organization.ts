@@ -1,6 +1,6 @@
 export class Organization {
     id: string;
-    name: string;
+    orgName: string;
     address: string;
     phoneNumber: string;
 }

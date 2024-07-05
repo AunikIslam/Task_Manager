@@ -14,7 +14,7 @@
             <input
                 class="input-field-large"
                 name="orgName"
-                [(ngModel)]="organization.name"
+                [(ngModel)]="organization.orgName"
                 placeholder="Enter Organization Name"
             />
             <input
@@ -25,10 +25,11 @@
             />
             <input
                 class="input-field-large"
-                name="phone"
+                name="address"
                 [(ngModel)]="organization.address"
                 placeholder="Enter Address"
             />
+            <div class="button" (click)="createOrganization()">Add</div>
         </div>
     </div>
 </div>

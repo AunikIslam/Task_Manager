@@ -8,24 +8,23 @@
         <table class="data-table" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Serial</th>
-                    <th>Product</th>
-                    <th class="text-right">Count</th>
-                    <th>&nbsp;</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
                     @for (item of organizations; track item) {
                         <tr>
-                            <td class="text-center"></td>
-                            <td>
-                                
-                            </td>
-                            <td class="text-right">
-                                
-                            </td>
+                            <td class="text-center">{{item.orgName}}</td>
+                            <td class="text-center">{{item.phoneNumber}}</td>
+                            <td class="text-center">{{item.address}}</td>
                             <td class="text-center">
-                                
+                                <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-flat-button (click)="getOrganization(item)">Edit</button>
+                            </mat-menu>
                             </td>
                         </tr>
                         }

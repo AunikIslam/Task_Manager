@@ -129,6 +129,18 @@ a {
     color: black
   }
 
+  .text-right {
+    text-align: right;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
   .data-table {
     border-radius: 10px;
     font-size: 13px;
@@ -227,6 +239,15 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     animation-name: animatetop;
+  }
+
+  .button {
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    text-align: center;
   }
 }
 

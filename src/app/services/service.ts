@@ -28,14 +28,20 @@ export class BaseService {
   }
 
   getOrganizationsList(pNode: string): Observable<any[]> {
-    return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items));
+    return this.fireDatabase.list(pNode).snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }))
+      )
+    );;
   }
 
-  addOrganization(pOrganization: Organization): void {
-    this.fireDatabase.list('organizations').push({
-      orgName: pOrganization.name,
-      address: pOrganization.address,
-      phoneNumber: pOrganization.phoneNumber
+  addOrganization(pOrganization: Organization): Observable<any> {
+    return new Observable(observer => {
+      this.fireDatabase.list('organizations').push({
+        orgName: pOrganization.orgName,
+        address: pOrganization.address,
+        phoneNumber: pOrganization.phoneNumber
+      })
     });
   }
 }

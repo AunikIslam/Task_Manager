@@ -5,7 +5,7 @@ import { BaseService } from '../../../services/service';
 @Component({
   selector: 'app-organization-list',
   templateUrl: './organization-list.component.html',
-  styleUrl: './organization-list.component.css'
+  styleUrl: './organization-list.component.scss'
 })
 export class OrganizationListComponent implements OnInit {
 
@@ -20,6 +20,7 @@ export class OrganizationListComponent implements OnInit {
   ngOnInit(): void {
     this.service.getOrganizationsList('organizations').subscribe(pResponse => {
       this.organizations = pResponse;
+      console.log(this.organizations);
     });
   }
 
