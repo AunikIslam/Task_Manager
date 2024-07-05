@@ -21,6 +21,8 @@ import { OrganizationManageComponent } from './main/organization/organization-ma
 import { OrganizationListComponent } from './main/organization/organization-list/organization-list.component';
 import { TaskListComponent } from './main/task/task-list/task-list.component';
 import { TaskManageComponent } from './main/task/task-manage/task-manage.component';
+import { UserListComponent } from './main/user/user-list/user-list.component';
+import { UserManageComponent } from './main/user/user-manage/user-manage.component';
 
 const routes: Routes = [
     {
@@ -43,7 +45,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent, 
-    TaskListComponent, TaskManageComponent],
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent],
   imports: [
     CommonModule,
     HttpClientModule,

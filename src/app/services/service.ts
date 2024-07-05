@@ -4,6 +4,7 @@ import { Observable, from, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Organization } from '../dto/organization';
 import { Task } from '../dto/task';
+import { User } from '../dto/user';
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
@@ -11,14 +12,6 @@ export class BaseService {
     private fireDatabase: AngularFireDatabase,
     private fireAuth: AngularFireAuth
   ) {}
-
-  addUser(): void {
-    this.fireDatabase.list('users').push({
-      name: 'Test',
-      email: '@gmail',
-      password: 'asdfghjkl',
-    });
-  }
 
   fetchData(pNode: string, pSearchValue: any, pSearchField: string): Observable<any[]> {
     return this.fireDatabase.list(pNode, ref => ref.orderByChild(pSearchField).equalTo(pSearchValue)).valueChanges();
@@ -62,6 +55,15 @@ export class BaseService {
         organization: pTask.organization,
         assignedTo: pTask.assignedTo,
         status: pTask.status
+      })
+    });
+  }
+
+  addUser(pUser: User): Observable<any> {
+    return new Observable(() => {
+      this.fireDatabase.list('users').push({
+        name: pUser.name,
+        email: pUser.email
       })
     });
   }
