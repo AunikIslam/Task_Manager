@@ -4,6 +4,7 @@ import { BaseService } from '../../../services/service';
 import { getEnumSelector } from '../../../utilities/utilites';
 import { StatusEnum } from '../../../enums/task-status';
 import { User } from '../../../dto/user';
+import { Organization } from '../../../dto/organization';
 
 @Component({
   selector: 'task-manage',
@@ -18,6 +19,7 @@ export class TaskManageComponent implements OnInit, OnChanges {
   @Output() reloadData = new EventEmitter<boolean>();
   statusList = getEnumSelector(StatusEnum);
   users: User[] = [];
+  organizations: Organization[] = [];
 
   constructor(private service: BaseService){
 
@@ -26,6 +28,10 @@ export class TaskManageComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.service.getDataList('users').subscribe(pResponse => {
       this.users = pResponse;
+    });
+
+    this.service.getDataList('organizations').subscribe(pResponse => {
+      this.organizations = pResponse;
     });
   }
 

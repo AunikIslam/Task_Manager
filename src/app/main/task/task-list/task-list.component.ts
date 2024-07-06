@@ -15,12 +15,13 @@ export class TaskListComponent {
   statusListEnum = StatusEnum;
 
   constructor(private service: BaseService) {
-
+    
   }
 
   ngOnInit(): void {
     this.service.getDataList('tasks').subscribe(pResponse => {
       this.tasks = pResponse;
+      console.log(this.tasks);
     });
   }
 

@@ -7,7 +7,7 @@
         </div>
 
         <div class="add-modal-text font-size-16">
-            {{task.name ? 'Edit Task: ': 'Add Task'}}
+            {{task.id ? 'Edit Task: ': 'Add Task'}}
         </div>
 
         <div class="search-container">
@@ -27,6 +27,15 @@
                 <mat-select placeholder="AssignedTo" name="AssignedList" [(ngModel)]="task.assignedTo" multiple>
                     <mat-option *ngFor="let user of users" [value]="user">
                         {{user.userName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>Year is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
+                <mat-select placeholder="Organization" name="Organization" [(ngModel)]="task.organization">
+                    <mat-option *ngFor="let organization of organizations" [value]="organization">
+                        {{organization.orgName}}
                     </mat-option>
                 </mat-select>
                 <mat-error>Year is required!</mat-error>
