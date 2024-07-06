@@ -1,6 +1,21 @@
-<div class="dashboard-charts">
-    <div class="card">
-        <div class="title">Registered Organizations</div>
-        <div class="value">{{totalNumberOfOrganizations}}</div>
+<div class="parent">
+    <div class="dashboard-charts">
+        <div class="card">
+            <div class="title">Registered Organizations</div>
+            <div class="value">{{totalNumberOfOrganizations}}</div>
+        </div>
+        <div class="card">
+            <div class="title">Total Tasks</div>
+            <div class="value">{{totalNumberofTasks}}</div>
+        </div>
+    </div>
+    <div class="section-title">Status Wise Tasks</div>
+    <div class="dashboard-charts">
+        @for (item of statusWiseTaskList; track item) {
+            <div class="card">
+                <div class="title">Task {{item.status}}</div>
+                <div class="value">{{item.value}}</div>
+            </div>
+            }
     </div>
 </div>

@@ -22,6 +22,10 @@ export class BaseService {
     return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
   }
 
+  getNumberOfTasks(pNode: string): Observable<number> {
+    return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
+  }
+
   getDataList(pNode: string): Observable<any[]> {
     return this.fireDatabase.list(pNode).snapshotChanges().pipe(
       map(changes => 
