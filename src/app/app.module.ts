@@ -23,6 +23,7 @@ import { TaskListComponent } from './main/task/task-list/task-list.component';
 import { TaskManageComponent } from './main/task/task-manage/task-manage.component';
 import { UserListComponent } from './main/user/user-list/user-list.component';
 import { UserManageComponent } from './main/user/user-manage/user-manage.component';
+import { StatusPipe } from './pipe/status-pipe';
 
 const routes: Routes = [
     {
@@ -59,6 +60,7 @@ const routes: Routes = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    StatusPipe,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]

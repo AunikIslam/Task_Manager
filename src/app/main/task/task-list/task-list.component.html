@@ -27,7 +27,7 @@
                                     <div>{{assigned.userName}}</div>
                                 }
                             </td>
-                            <td class="text-center">{{statusListEnum[item.status]}}</td>
+                            <td class="text-center">{{item.status | status}}</td>
                             <td class="text-center">
                                 <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
                             <mat-menu #menu="matMenu">
