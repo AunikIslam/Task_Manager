@@ -1,20 +1,14 @@
 <div id="userAddModal" class="add-modal-outside" (click)="closeWindow()" >
     <div class="add-modal-v1" (click)="$event.stopPropagation()">
-        <div class="modal-close-box">
-            <div class="modal-close-button">
-                
-            </div>
-        </div>
-
-        <div class="add-modal-text font-size-16">
-            {{user.name ? 'Edit User: ': 'Add New User'}}
+        <div class="add-modal-text">
+            {{user.userName ? 'Edit User: ': 'Add New User'}}
         </div>
 
         <div class="search-container">
             <input
                 class="input-field-large"
                 name="name"
-                [(ngModel)]="user.name"
+                [(ngModel)]="user.userName"
                 placeholder="Enter User Name"
             />
             <input

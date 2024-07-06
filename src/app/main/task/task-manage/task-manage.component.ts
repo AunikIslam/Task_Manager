@@ -24,7 +24,9 @@ export class TaskManageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    
+    this.service.getDataList('users').subscribe(pResponse => {
+      this.users = pResponse;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

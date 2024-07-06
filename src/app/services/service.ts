@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Organization } from '../dto/organization';
 import { Task } from '../dto/task';
 import { User } from '../dto/user';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
@@ -21,14 +22,6 @@ export class BaseService {
     return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
   }
 
-  getOrganizationsList(pNode: string): Observable<any[]> {
-    return this.fireDatabase.list(pNode).snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }))
-      )
-    );;
-  }
-
   getDataList(pNode: string): Observable<any[]> {
     return this.fireDatabase.list(pNode).snapshotChanges().pipe(
       map(changes => 
@@ -38,8 +31,10 @@ export class BaseService {
   }
 
   addOrganization(pOrganization: Organization): Observable<any> {
+    pOrganization.id = uuidv4();
     return new Observable(() => {
       this.fireDatabase.list('organizations').push({
+        id: pOrganization.id,
         orgName: pOrganization.orgName,
         address: pOrganization.address,
         phoneNumber: pOrganization.phoneNumber
@@ -48,8 +43,10 @@ export class BaseService {
   }
 
   addTask(pTask: Task): Observable<any> {
+    pTask.id = uuidv4();
     return new Observable(() => {
       this.fireDatabase.list('tasks').push({
+        id: pTask.id,
         name: pTask.name,
         description: pTask.description,
         organization: pTask.organization,
@@ -60,9 +57,11 @@ export class BaseService {
   }
 
   addUser(pUser: User): Observable<any> {
+    pUser.id = uuidv4();
     return new Observable(() => {
       this.fireDatabase.list('users').push({
-        name: pUser.name,
+        id: pUser.id,
+        userName: pUser.userName,
         email: pUser.email
       })
     });
