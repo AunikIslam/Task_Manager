@@ -42,6 +42,10 @@ export class BaseService {
     });
   }
 
+  updateOrganization(pNode: string, id: string, organization: Partial<Organization>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`).update(organization));
+  }
+
   addTask(pTask: Task): Observable<any> {
     pTask.id = uuidv4();
     return new Observable(() => {
@@ -56,6 +60,10 @@ export class BaseService {
     });
   }
 
+  updateTask(pNode: string, id: string, task: Partial<Task>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`).update(task));
+  }
+
   addUser(pUser: User): Observable<any> {
     pUser.id = uuidv4();
     return new Observable(() => {
@@ -65,5 +73,9 @@ export class BaseService {
         email: pUser.email
       })
     });
+  }
+
+  updateUser(pNode: string, id: string, user: Partial<User>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`).update(user));
   }
 }

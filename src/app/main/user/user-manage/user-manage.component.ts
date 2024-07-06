@@ -38,4 +38,9 @@ export class UserManageComponent {
     this.service.addUser(this.user).subscribe(() => {
     });
   }
+
+  updateUser(): void {
+    this.service.updateTask('users', this.user.id, this.user).subscribe(pResponse => {
+    });
+  }
 }

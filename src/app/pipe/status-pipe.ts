@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { getEnumSelector } from '../utilities/utilites';
 import { StatusEnum } from '../enums/task-status';
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BaseService } from '../../../services/service';
 import { Task } from '../../../dto/task';
 import { StatusEnum } from '../../../enums/task-status';
+import { StatusPipe } from '../../../pipe/status-pipe';
 
 @Component({
   selector: 'app-task-list',

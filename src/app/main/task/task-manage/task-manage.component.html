@@ -1,4 +1,4 @@
-<div id="taskAddModal" class="add-modal-outside" (click)="closeOrganizationWindow()" >
+<div id="taskAddModal" class="add-modal-outside" (click)="closeWindow()" >
     <div class="add-modal-v1" (click)="$event.stopPropagation()">
         <div class="modal-close-box">
             <div class="modal-close-button">
@@ -24,7 +24,7 @@
                 placeholder="Enter Description"
             />
             <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
-                <mat-select placeholder="AssignedTo" name="AssignedList" [(ngModel)]="task.assignedTo" multiple>
+                <mat-select placeholder="AssignedTo" name="AssignedList" [(ngModel)]="task.assignedTo" multiple [compareWith]="compareById">
                     <mat-option *ngFor="let user of users" [value]="user">
                         {{user.userName}}
                     </mat-option>
@@ -33,7 +33,7 @@
             </mat-form-field>
 
             <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
-                <mat-select placeholder="Organization" name="Organization" [(ngModel)]="task.organization">
+                <mat-select placeholder="Organization" name="Organization" [(ngModel)]="task.organization" [compareWith]="compareById">
                     <mat-option *ngFor="let organization of organizations" [value]="organization">
                         {{organization.orgName}}
                     </mat-option>
@@ -50,7 +50,7 @@
                 <mat-error>Year is required!</mat-error>
             </mat-form-field>
 
-            <div class="button" (click)="createOrganization()">Add</div>
+            <div class="button" (click)="task.id ? updateTask() : createTask()">{{task.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>
 </div>

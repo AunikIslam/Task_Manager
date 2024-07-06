@@ -17,7 +17,7 @@
                 [(ngModel)]="user.email"
                 placeholder="Enter User Email"
             />
-            <div class="button" (click)="createUser()">Add</div>
+            <div class="button" (click)="user.id ? updateUser() : createUser()">{{user.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>
 </div>

@@ -35,6 +35,10 @@ export class TaskManageComponent implements OnInit, OnChanges {
     });
   }
 
+  compareById( pObj1: any, pObj2: any ): boolean {
+    return pObj1 && pObj2 && pObj1[ 'id' ] === pObj2[ 'id' ];
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if(this.shouldOpenManageWindow) {
       const modal = document.getElementById('taskAddModal');
@@ -42,14 +46,19 @@ export class TaskManageComponent implements OnInit, OnChanges {
     }
   }
 
-  closeOrganizationWindow(): void {
+  closeWindow(): void {
     this.openConditionChangeListener.emit();
     const modal = document.getElementById('taskAddModal');
     modal.style.display = 'none';
   }
 
-  createOrganization(): void {
+  createTask(): void {
     this.service.addTask(this.task).subscribe(() => {
+    });
+  }
+
+  updateTask(): void {
+    this.service.updateTask('tasks', this.task.id, this.task).subscribe(pResponse => {
     });
   }
 

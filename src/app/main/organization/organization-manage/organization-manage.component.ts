@@ -29,7 +29,7 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
     }
   }
 
-  closeOrganizationWindow(): void {
+  closeWindow(): void {
     this.openConditionChangeListener.emit();
     const modal = document.getElementById('organizationAddModal');
     modal.style.display = 'none';
@@ -37,6 +37,11 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
 
   createOrganization(): void {
     this.service.addOrganization(this.organization).subscribe(() => {
+    });
+  }
+
+  updateOrganization(): void {
+    this.service.updateTask('organizations', this.organization.id, this.organization).subscribe(pResponse => {
     });
   }
 }

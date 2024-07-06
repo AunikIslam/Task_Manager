@@ -50,7 +50,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent, 
-    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent],
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -60,7 +60,6 @@ const routes: Routes = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    StatusPipe,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
