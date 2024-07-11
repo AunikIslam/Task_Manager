@@ -5,6 +5,7 @@ import { getEnumSelector } from '../../../utilities/utilites';
 import { StatusEnum } from '../../../enums/task-status';
 import { User } from '../../../dto/user';
 import { Organization } from '../../../dto/organization';
+import { PriotiresEnum } from '../../../enums/priorites';
 
 @Component({
   selector: 'task-manage',
@@ -18,6 +19,7 @@ export class TaskManageComponent implements OnInit, OnChanges {
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
   statusList = getEnumSelector(StatusEnum);
+  priorityList = getEnumSelector(PriotiresEnum);
   users: User[] = [];
   organizations: Organization[] = [];
 

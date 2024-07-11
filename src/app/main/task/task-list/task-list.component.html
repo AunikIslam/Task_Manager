@@ -13,6 +13,8 @@
                     <th class="text-center">Organization</th>
                     <th class="text-center">Assigned To</th>
                     <th class="text-center">Status</th>
+                    <th class="text-center">Priority</th>
+                    <th class="text-center">Comment</th>
                     <th class="text-center">&nbsp;</th>
                 </tr>
                 </thead>
@@ -28,6 +30,8 @@
                                 }
                             </td>
                             <td class="text-center">{{item.status | status}}</td>
+                            <td class="text-center">{{item.priority | priority}}</td>
+                            <td class="text-center">{{item.comment}}</td>
                             <td class="text-center">
                                 <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
                             <mat-menu #menu="matMenu">

@@ -24,6 +24,7 @@ import { TaskManageComponent } from './main/task/task-manage/task-manage.compone
 import { UserListComponent } from './main/user/user-list/user-list.component';
 import { UserManageComponent } from './main/user/user-manage/user-manage.component';
 import { StatusPipe } from './pipe/status-pipe';
+import { PriorityPipe } from './pipe/priority-pipe';
 
 const routes: Routes = [
     {
@@ -50,7 +51,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent, 
-    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe],
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe],
   imports: [
     CommonModule,
     HttpClientModule,

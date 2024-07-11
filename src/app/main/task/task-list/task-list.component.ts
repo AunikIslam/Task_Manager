@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { BaseService } from '../../../services/service';
 import { Task } from '../../../dto/task';
 import { StatusEnum } from '../../../enums/task-status';
-import { StatusPipe } from '../../../pipe/status-pipe';
+import { PriorityPipe } from '../../../pipe/priority-pipe';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.scss'
+  styleUrl: './task-list.component.scss',
+  providers: [PriorityPipe]
 })
 export class TaskListComponent {
   tasks: Task[] = [];

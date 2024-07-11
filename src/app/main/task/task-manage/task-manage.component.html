@@ -50,6 +50,22 @@
                 <mat-error>Year is required!</mat-error>
             </mat-form-field>
 
+            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
+                <mat-select placeholder="Priority" name="priority" [(ngModel)]="task.priority">
+                    <mat-option *ngFor="let priority of priorityList" [value]="priority.value">
+                        {{priority.title}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>Year is required!</mat-error>
+            </mat-form-field>
+
+            <input
+                class="input-field-large"
+                name="comment"
+                [(ngModel)]="task.comment"
+                placeholder="Comment"
+            />
+
             <div class="button" (click)="task.id ? updateTask() : createTask()">{{task.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>
