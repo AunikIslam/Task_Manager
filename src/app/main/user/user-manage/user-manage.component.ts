@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { User } from '../../../dto/user';
 import { BaseService } from '../../../services/service';
+import { getEnumSelector } from '../../../utilities/utilites';
+import { UserRoleEnum } from '../../../enums/user-roles';
 
 @Component({
   selector: 'user-manage',
@@ -12,6 +14,7 @@ export class UserManageComponent {
   @Input() user = new User();
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
+  userRoles = getEnumSelector(UserRoleEnum);
 
   constructor(private service: BaseService){
 

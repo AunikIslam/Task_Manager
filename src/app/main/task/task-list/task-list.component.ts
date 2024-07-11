@@ -23,7 +23,6 @@ export class TaskListComponent {
   ngOnInit(): void {
     this.service.getDataList('tasks').subscribe(pResponse => {
       this.tasks = pResponse;
-      console.log(this.tasks);
     });
   }
 

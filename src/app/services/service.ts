@@ -59,7 +59,9 @@ export class BaseService {
         description: pTask.description,
         organization: pTask.organization,
         assignedTo: pTask.assignedTo,
-        status: pTask.status
+        status: pTask.status,
+        priority: pTask.priority,
+        comment: pTask.comment
       })
     });
   }
@@ -74,7 +76,8 @@ export class BaseService {
       this.fireDatabase.list('users').push({
         id: pUser.id,
         userName: pUser.userName,
-        email: pUser.email
+        email: pUser.email,
+        userRole: pUser.userRole
       })
     });
   }
