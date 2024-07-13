@@ -14,22 +14,29 @@ export class BaseService {
     private fireAuth: AngularFireAuth
   ) {}
 
-  fetchData(pNode: string, pSearchValue: any, pSearchField: string): Observable<any[]> {
-    return this.fireDatabase.list(pNode, ref => ref.orderByChild(pSearchField).equalTo(pSearchValue)).valueChanges();
+  fetchData(pNode: string, 
+    pSearchValue: any, pSearchField: string): Observable<any[]> {
+    return this.fireDatabase.list(pNode, ref => 
+      ref.orderByChild(pSearchField).equalTo(pSearchValue))
+      .valueChanges();
   }
 
-  getNumberOfOrganizations(pNode: string): Observable<number> {
-    return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
+  getNumberOfOrganizations(pNode: string)
+  : Observable<number> {
+    return this.fireDatabase.list(pNode).snapshotChanges()
+    .pipe(map(items => items.length));
   }
 
   getNumberOfTasks(pNode: string): Observable<number> {
-    return this.fireDatabase.list(pNode).snapshotChanges().pipe(map(items => items.length));
+    return this.fireDatabase.list(pNode)
+    .snapshotChanges().pipe(map(items => items.length));
   }
 
   getDataList(pNode: string): Observable<any[]> {
     return this.fireDatabase.list(pNode).snapshotChanges().pipe(
       map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }))
+        changes.map(c => 
+          ({ key: c.payload.key, ...c.payload.val() as {} }))
       )
     );;
   }
@@ -46,8 +53,10 @@ export class BaseService {
     });
   }
 
-  updateOrganization(pNode: string, id: string, organization: Partial<Organization>): Observable<void> {
-    return from(this.fireDatabase.object(`${pNode}/${id}`).update(organization));
+  updateOrganization(pNode: string, id: string, 
+    organization: Partial<Organization>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`)
+    .update(organization));
   }
 
   addTask(pTask: Task): Observable<any> {
@@ -66,8 +75,10 @@ export class BaseService {
     });
   }
 
-  updateTask(pNode: string, id: string, task: Partial<Task>): Observable<void> {
-    return from(this.fireDatabase.object(`${pNode}/${id}`).update(task));
+  updateTask(pNode: string, 
+    id: string, task: Partial<Task>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`)
+    .update(task));
   }
 
   addUser(pUser: User): Observable<any> {
@@ -82,7 +93,9 @@ export class BaseService {
     });
   }
 
-  updateUser(pNode: string, id: string, user: Partial<User>): Observable<void> {
-    return from(this.fireDatabase.object(`${pNode}/${id}`).update(user));
+  updateUser(pNode: string, 
+    id: string, user: Partial<User>): Observable<void> {
+    return from(this.fireDatabase.object(`${pNode}/${id}`)
+    .update(user));
   }
 }
