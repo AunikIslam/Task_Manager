@@ -2,9 +2,9 @@
     <div class="sidebar">
         <div class="sidebar-header"></div>
         @for (item of navigations; track item) {
-            <div class="children" [ngClass]="item.id == menuName ? 'children-bg' : null">
+            <div class="children" [ngClass]="item.id == menuId ? 'children-bg' : null">
                 <div>
-                    <a [routerLink]="[ {{item.url}} ]">{{item.name}}</a>
+                    <a [routerLink]="[ item.url ]">{{item.name}}</a>
                 </div>
             </div>
             }

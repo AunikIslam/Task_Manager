@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   statusWiseTaskList = [];
 
   constructor(private service: BaseService, private menuService: SeletedMenuService) {
-    this.menuService.setMenuId('DASHBOARD');
+    this.menuService.broadcastSelectedModuleId('DASHBOARD');
   }
 
   ngOnInit(): void {

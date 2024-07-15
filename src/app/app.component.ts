@@ -16,7 +16,9 @@ export class AppComponent implements OnInit {
   navigations = navigations;
 
   constructor(private router: Router, private menuService: SeletedMenuService) {
-    this.menuId = this.menuService.getMenuId();
+    this.menuService.sharedModuleId.subscribe(pId => {
+      this.menuId = pId;
+    });
   }
 
   ngOnInit() {
