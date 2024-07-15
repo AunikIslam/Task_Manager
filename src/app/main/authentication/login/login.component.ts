@@ -62,4 +62,9 @@ export class LoginComponent {
         }
       });
   }
+
+  googleLogIn(): void {
+    const user = this.service.googleSignIn();
+    console.log(user);
+  }
 }

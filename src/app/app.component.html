@@ -4,7 +4,7 @@
         @for (item of navigations; track item) {
             <div class="children" [ngClass]="item.id == menuId ? 'children-bg' : null">
                 <div>
-                    <a [routerLink]="[ item.url ]">{{item.name}}</a>
+                    <a style="color: black;" [routerLink]="[ item.url ]">{{item.name}}</a>
                 </div>
             </div>
             }

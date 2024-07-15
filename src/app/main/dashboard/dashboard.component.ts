@@ -43,8 +43,4 @@ export class DashboardComponent implements OnInit {
       });
     });
   }
-
-  googleLogIn(): void {
-    this.service.googleSignIn();
-  }
 }
