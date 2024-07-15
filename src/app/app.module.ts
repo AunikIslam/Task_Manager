@@ -26,6 +26,7 @@ import { UserManageComponent } from './main/user/user-manage/user-manage.compone
 import { StatusPipe } from './pipe/status-pipe';
 import { PriorityPipe } from './pipe/priority-pipe';
 import { UserRolePipe } from './pipe/user-role-pipe';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 const routes: Routes = [
     {
@@ -62,6 +63,7 @@ const routes: Routes = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]

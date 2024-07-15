@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { SeletedMenuService } from './services/selected-menu.service';
+import { navigations } from './navigation';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +12,11 @@ export class AppComponent implements OnInit {
 
   showToolbar = false;
   shouldOrgAddWindowOpen = false;
+  menuId: string;
+  navigations = navigations;
 
-  constructor(private router: Router) {
-    
+  constructor(private router: Router, private menuService: SeletedMenuService) {
+    this.menuId = this.menuService.getMenuId();
   }
 
   ngOnInit() {

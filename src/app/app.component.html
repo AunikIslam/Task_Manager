@@ -1,22 +1,13 @@
 <div *ngIf="showToolbar" class="layout-parent">
     <div class="sidebar">
         <div class="sidebar-header"></div>
-        <div class="children children-bg">Dashboard</div>
-        <div class="children">
-            <div>
-                <a [routerLink]="[ '/organizations' ]">Organizations</a>
+        @for (item of navigations; track item) {
+            <div class="children" [ngClass]="item.id == menuName ? 'children-bg' : null">
+                <div>
+                    <a [routerLink]="[ {{item.url}} ]">{{item.name}}</a>
+                </div>
             </div>
-        </div>
-        <div class="children">
-            <div>
-                <a [routerLink]="[ '/tasks' ]">Tasks</a>
-            </div>
-        </div>
-        <div class="children">
-            <div>
-                <a [routerLink]="[ '/users' ]">Users</a>
-            </div>
-        </div>
+            }
     </div>
     <div>
         <div class="toolbar"></div>

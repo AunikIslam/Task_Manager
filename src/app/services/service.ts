@@ -6,6 +6,7 @@ import { Organization } from '../dto/organization';
 import { Task } from '../dto/task';
 import { User } from '../dto/user';
 import { v4 as uuidv4 } from 'uuid';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
@@ -13,6 +14,25 @@ export class BaseService {
     private fireDatabase: AngularFireDatabase,
     private fireAuth: AngularFireAuth
   ) {}
+
+  googleSignIn() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(user);
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      
+    });
+  }
 
   fetchData(pNode: string, 
     pSearchValue: any, pSearchField: string): Observable<any[]> {

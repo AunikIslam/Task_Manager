@@ -3,6 +3,7 @@ import { BaseService } from '../../services/service';
 import { getEnumSelector } from '../../utilities/utilites';
 import { StatusEnum } from '../../enums/task-status';
 import { Task } from '../../dto/task';
+import { SeletedMenuService } from '../../services/selected-menu.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,8 +18,8 @@ export class DashboardComponent implements OnInit {
   statusList = getEnumSelector(StatusEnum);
   statusWiseTaskList = [];
 
-  constructor(private service: BaseService) {
-
+  constructor(private service: BaseService, private menuService: SeletedMenuService) {
+    this.menuService.setMenuId('DASHBOARD');
   }
 
   ngOnInit(): void {
@@ -40,7 +41,10 @@ export class DashboardComponent implements OnInit {
         const totalTasks = this.taskList.filter(pItem => pItem.status == pStatus.value).length;
         this.statusWiseTaskList.push({status: pStatus.title, value: totalTasks});
       });
-      console.log(this.statusWiseTaskList);
     });
+  }
+
+  googleLogIn(): void {
+    this.service.googleSignIn();
   }
 }
