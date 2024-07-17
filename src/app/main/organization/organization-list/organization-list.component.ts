@@ -25,6 +25,7 @@ export class OrganizationListComponent implements OnInit {
       .fetchDataByNode('users', this.user.id)
       .subscribe((pResponse) => {
         this.user = pResponse;
+        console.log(this.user);
         this.organizations = pResponse.organizations ? pResponse.organizations : []; 
       });
   }

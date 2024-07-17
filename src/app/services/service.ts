@@ -46,12 +46,11 @@ export class BaseService {
       const db = getDatabase();
       const node = ref(db, pNode);
       const dataQuery = query(node, orderByChild('id'), equalTo(pSearchValue));
-  
       // Query the database to find the user by email
       get(dataQuery).then(snapshot => {
         if (snapshot.exists()) {
-          const data = snapshot.val();
-          subscriber.next(data);
+          let data = snapshot.val();
+          subscriber.next(data[Object.keys(data)[0]]);
           subscriber.complete();
         } else {
           subscriber.error('No user found with this email.');

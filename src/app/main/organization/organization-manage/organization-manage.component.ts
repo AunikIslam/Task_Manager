@@ -42,7 +42,6 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
       this.user.organizations = [];
     }
     this.user.organizations.push(this.organization);
-    console.log(this.user.id);
     this.service.updateDataByNode('users', this.user.id, this.user).subscribe(pResponse => {
     });
   }
