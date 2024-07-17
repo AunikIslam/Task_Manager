@@ -10,7 +10,6 @@
                 <tr>
                     <th class="text-center">Name</th>
                     <th class="text-center">Email</th>
-                    <th class="text-center">Role</th>
                     <th class="text-center">&nbsp;</th>
                 </tr>
                 </thead>
@@ -19,7 +18,6 @@
                         <tr>
                             <td class="text-center">{{item.userName}}</td>
                             <td class="text-center">{{item.email}}</td>
-                            <td class="text-center">{{item.userRole | userRole}}</td>
                             <td class="text-center">
                                 <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
                             <mat-menu #menu="matMenu">

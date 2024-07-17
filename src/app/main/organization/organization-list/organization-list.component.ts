@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Organization } from '../../../dto/organization';
 import { BaseService } from '../../../services/service';
+import { User } from '../../../dto/user';
 
 @Component({
   selector: 'app-organization-list',
@@ -12,15 +13,20 @@ export class OrganizationListComponent implements OnInit {
   organizations: Organization[] = [];
   organization = new Organization();
   openOrganizationManageWindow = false;
+  user = new User();
 
   constructor(private service: BaseService) {
 
   }
 
   ngOnInit(): void {
-    this.service.getDataList('organizations').subscribe(pResponse => {
-      this.organizations = pResponse;
-    });
+    this.user = JSON.parse(localStorage.getItem('loggedUser'));
+    this.service
+      .fetchDataByNode('users', this.user.id)
+      .subscribe((pResponse) => {
+        this.user = pResponse;
+        this.organizations = pResponse.organizations ? pResponse.organizations : []; 
+      });
   }
 
   getOrganization(pOrganization: Organization): void {

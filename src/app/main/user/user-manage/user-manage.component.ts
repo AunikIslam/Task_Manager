@@ -14,7 +14,6 @@ export class UserManageComponent {
   @Input() user = new User();
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
-  userRoles = getEnumSelector(UserRoleEnum);
 
   constructor(private service: BaseService){
 
@@ -43,7 +42,7 @@ export class UserManageComponent {
   }
 
   updateUser(): void {
-    this.service.updateTask('users', this.user.id, this.user).subscribe(pResponse => {
+    this.service.updateUser('users', this.user.id, this.user).subscribe(pResponse => {
     });
   }
 }

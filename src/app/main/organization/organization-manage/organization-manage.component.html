@@ -29,7 +29,7 @@
                 [(ngModel)]="organization.address"
                 placeholder="Enter Address"
             />
-            <div class="button" (click)="organization.id ? updateOrganization : createOrganization()">{{organization.id ? 'Edit' : 'Add'}}</div>
+            <div class="button" (click)="addOrganizationToUser()">{{organization.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { BaseService } from '../../../services/service';
 import { Router } from '@angular/router';
+import { GoolgeUser } from '../../../dto/google-user';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +25,10 @@ export class LoginComponent {
   displayText = '';
   cursor = '|';
   showLoginView = true;
+  googleUser = new GoolgeUser();
 
   constructor(private formBuilder: FormBuilder, private service: BaseService, private router: Router) {
-    // this.service.googleSignUp()
+    
   }
 
   ngOnInit() {
@@ -55,7 +57,7 @@ export class LoginComponent {
 
   login(): void {
     this.service
-      .fetchData('users', this.loginForm.get('userName').value, 'userName')
+      .fetchData('users', this.loginForm.get('email').value, 'email')
       .subscribe((pResponse) => {
         if(pResponse[0].password == this.loginForm.get('password').value) {
           this.router.navigate(['dashboard']);
@@ -64,7 +66,22 @@ export class LoginComponent {
   }
 
   googleLogIn(): void {
-    const user = this.service.googleSignIn();
-    console.log(user);
+    this.service.googleSignIn().then(({ user, token }) => {
+      this.googleUser.email = user.email;
+      this.googleUser.userName = user.displayName;
+      this.googleUser.access_token = token;
+      this.service.fetchData('users', this.googleUser.email, 'email').subscribe(pResponse => {
+        if(pResponse.length > 0) {
+          localStorage.setItem('loggedUser', JSON.stringify(pResponse[0]));
+          this.router.navigate(['/dashboard'])
+        } else {
+          this.service.addUserFromGoogleLogin(this.googleUser).subscribe(() => {
+            localStorage.setItem('loggedUser', JSON.stringify(this.googleUser));
+          });
+        }
+      });
+    }).catch((error) => {
+      console.error('Error during sign in:', error);
+    });
   }
 }

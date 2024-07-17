@@ -17,14 +17,6 @@
                 [(ngModel)]="user.email"
                 placeholder="Enter User Email"
             />
-            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
-                <mat-select placeholder="User Role" name="userRole" [(ngModel)]="user.userRole">
-                    <mat-option *ngFor="let priority of userRoles" [value]="priority.value">
-                        {{priority.title}}
-                    </mat-option>
-                </mat-select>
-                <mat-error>Year is required!</mat-error>
-            </mat-form-field>
             <div class="button" (click)="user.id ? updateUser() : createUser()">{{user.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>

@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable, from, map } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Organization } from '../dto/organization';
 import { Task } from '../dto/task';
 import { User } from '../dto/user';
 import { v4 as uuidv4 } from 'uuid';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { Router } from '@angular/router';
+import { getDatabase, ref, query, orderByChild, equalTo, get, update } from 'firebase/database';
+
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
   constructor(
-    private fireDatabase: AngularFireDatabase
+    private fireDatabase: AngularFireDatabase,
+    private router: Router
   ) {}
 
-  googleSignIn(): any {
+  googleSignIn() {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    return signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      // The signed-in user info.
       const user = result.user;
-      return user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    }).catch((error) => {
-      
+      console.log(user);
+      return { user, token }; // Return an object containing the user and token
+    })
+    .catch((error) => {
+      console.error('Error during sign in:', error);
+      throw error; // Re-throw the error to be handled by the caller
     });
   }
 
@@ -36,6 +39,56 @@ export class BaseService {
     return this.fireDatabase.list(pNode, ref => 
       ref.orderByChild(pSearchField).equalTo(pSearchValue))
       .valueChanges();
+  }
+
+  fetchDataByNode(pNode: string, pSearchValue: any): Observable<any> {
+    return new Observable(subscriber => {
+      const db = getDatabase();
+      const node = ref(db, pNode);
+      const dataQuery = query(node, orderByChild('id'), equalTo(pSearchValue));
+  
+      // Query the database to find the user by email
+      get(dataQuery).then(snapshot => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          subscriber.next(data);
+          subscriber.complete();
+        } else {
+          subscriber.error('No user found with this email.');
+        }
+      }).catch(error => {
+        subscriber.error('Error fetching user data: ' + error);
+      });
+    });
+  }
+
+  updateDataByNode(pNode: string, pSearchValue: any, pNewValue: any): Observable<any[]> {
+    return new Observable(subscriber => {
+      const db = getDatabase();
+      const node = ref(db, pNode);
+      const dataQuery = query(node, orderByChild('id'), equalTo(pSearchValue));
+  
+      
+      get(dataQuery).then(snapshot => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          const userId = Object.keys(userData)[0];
+          console.log(userId);
+          const userUpdateRef = ref(db, `${pNode}/${userId}`);
+  
+          // Update the user data
+          update(userUpdateRef, pNewValue).then(() => {
+            subscriber.complete();
+          }).catch(error => {
+            subscriber.error('Error updating user data: ' + error);
+          });
+        } else {
+          subscriber.error('No user found with this email.');
+        }
+      }).catch(error => {
+        subscriber.error('Error fetching user data: ' + error);
+      });
+    });
   }
 
   getNumberOfOrganizations(pNode: string)
@@ -104,7 +157,18 @@ export class BaseService {
       this.fireDatabase.list('users').push({
         id: pUser.id,
         userName: pUser.userName,
-        email: pUser.email
+        email: pUser.email,
+        organizations: pUser.organizations
+      })
+    });
+  }
+
+  addUserFromGoogleLogin(pSignUpUser): Observable<any> {
+    return new Observable(() => {
+      this.fireDatabase.list('users').push({
+        id: uuidv4(),
+        userName: pSignUpUser.email,
+        email: pSignUpUser.email
       })
     });
   }
