@@ -5,8 +5,8 @@ export const navigations = [
         url: '/dashboard'
     },
     {
-        id: 'CLIENTS',
-        name: 'Clients',
+        id: 'ORGANIZATIONS',
+        name: 'Organizations',
         url: '/clients'
     },
     {
@@ -18,5 +18,10 @@ export const navigations = [
         id: 'USERS',
         name: 'Users',
         url: '/users'
+    },
+    {
+        id: 'SPACES',
+        name: 'Spaces',
+        url: '/spaces'
     }
 ]

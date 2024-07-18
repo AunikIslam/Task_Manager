@@ -1,17 +1,17 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Organization } from '../../../dto/organization';
-import { BaseService } from '../../../services/service';
+import { Space } from '../../../dto/space';
 import { User } from '../../../dto/user';
+import { BaseService } from '../../../services/service';
 
 @Component({
-  selector: 'organization-manage',
-  templateUrl: './organization-manage.component.html',
-  styleUrl: './organization-manage.component.scss'
+  selector: 'app-space-manage',
+  templateUrl: './space-manage.component.html',
+  styleUrl: './space-manage.component.css'
 })
-export class OrganizationManageComponent implements OnInit, OnChanges {
+export class SpaceManageComponent implements OnInit, OnChanges {
 
   @Input() shouldOpenManageWindow = false;
-  @Input() organization = new Organization();
+  @Input() space = new Space();
   @Input() user = new User();
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
@@ -26,22 +26,22 @@ export class OrganizationManageComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.shouldOpenManageWindow) {
-      const modal = document.getElementById('organizationAddModal');
+      const modal = document.getElementById('spaceAddModal');
       modal.style.display = 'block';
     }
   }
 
   closeWindow(): void {
     this.openConditionChangeListener.emit();
-    const modal = document.getElementById('organizationAddModal');
+    const modal = document.getElementById('spaceAddModal');
     modal.style.display = 'none';
   }
 
-  addOrganizationToUser(): void {
-    if(!this.user.organizations) {
-      this.user.organizations = [];
+  addSpaceToUser(): void {
+    if(!this.user.spaces) {
+      this.user.spaces = [];
     }
-    this.user.organizations.push(this.organization);
+    this.user.spaces.push(this.space);
     this.service.updateDataByNode('users', this.user.id, this.user).subscribe(pResponse => {
     });
   }

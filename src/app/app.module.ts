@@ -17,8 +17,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { OrganizationManageComponent } from './main/organization/organization-manage/organization-manage.component';
-import { OrganizationListComponent } from './main/organization/organization-list/organization-list.component';
 import { TaskListComponent } from './main/task/task-list/task-list.component';
 import { TaskManageComponent } from './main/task/task-manage/task-manage.component';
 import { UserListComponent } from './main/user/user-list/user-list.component';
@@ -27,6 +25,8 @@ import { StatusPipe } from './pipe/status-pipe';
 import { PriorityPipe } from './pipe/priority-pipe';
 import { UserRolePipe } from './pipe/user-role-pipe';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SpaceListComponent } from './main/space/space-list/space-list.component';
+import { SpaceManageComponent } from './main/space/space-manage/space-manage.component';
 
 const routes: Routes = [
     {
@@ -38,8 +38,8 @@ const routes: Routes = [
       component: DashboardComponent
     },
     {
-      path: 'organizations',
-      component: OrganizationListComponent
+      path: 'spaces',
+      component: SpaceListComponent
     },
     {
       path: 'tasks',
@@ -52,8 +52,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, OrganizationManageComponent, OrganizationListComponent, 
-    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe, UserRolePipe],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, 
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe, UserRolePipe, SpaceListComponent, SpaceManageComponent],
   imports: [
     CommonModule,
     HttpClientModule,

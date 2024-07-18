@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../dto/user';
 import { BaseService } from '../../../services/service';
+import { SeletedMenuService } from '../../../services/selected-menu.service';
 
 @Component({
   selector: 'app-user-list',
@@ -12,8 +13,8 @@ export class UserListComponent implements OnInit {
   user = new User();
   openManageWindow = false;
 
-  constructor(private service: BaseService) {
-
+  constructor(private service: BaseService, private menuService: SeletedMenuService) {
+    this.menuService.broadcastSelectedModuleId('USER');
   }
 
   ngOnInit(): void {

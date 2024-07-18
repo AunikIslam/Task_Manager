@@ -3,6 +3,7 @@ import { BaseService } from '../../../services/service';
 import { Task } from '../../../dto/task';
 import { StatusEnum } from '../../../enums/task-status';
 import { PriorityPipe } from '../../../pipe/priority-pipe';
+import { SeletedMenuService } from '../../../services/selected-menu.service';
 
 @Component({
   selector: 'app-task-list',
@@ -16,8 +17,8 @@ export class TaskListComponent {
   openManageWindow = false;
   statusListEnum = StatusEnum;
 
-  constructor(private service: BaseService) {
-    
+  constructor(private service: BaseService, private menuService: SeletedMenuService) {
+    this.menuService.broadcastSelectedModuleId('TASK');
   }
 
   ngOnInit(): void {

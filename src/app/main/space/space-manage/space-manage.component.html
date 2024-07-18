@@ -1,0 +1,23 @@
+<div id="spaceAddModal" class="add-modal-outside" (click)="closeWindow()" >
+    <div class="add-modal-v1" (click)="$event.stopPropagation()">
+        <div class="modal-close-box">
+            <div class="modal-close-button">
+                
+            </div>
+        </div>
+
+        <div class="add-modal-text font-size-16">
+            {{space.id ? 'Edit Space: ': 'Add New Space'}}
+        </div>
+
+        <div class="search-container">
+            <input
+                class="input-field-large"
+                name="orgName"
+                [(ngModel)]="space.name"
+                placeholder="Enter Space Name"
+            />
+            <div class="button" (click)="addSpaceToUser()">{{space.id ? 'Edit' : 'Add'}}</div>
+        </div>
+    </div>
+</div>

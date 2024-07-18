@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Router } from '@angular/router';
 import { getDatabase, ref, query, orderByChild, equalTo, get, update } from 'firebase/database';
+import { Space } from '../dto/space';
 
 
 @Injectable({ providedIn: 'root' })
@@ -110,22 +111,14 @@ export class BaseService {
     );;
   }
 
-  addOrganization(pOrganization: Organization): Observable<any> {
-    pOrganization.id = uuidv4();
+  addSpace(pSpace: Space): Observable<any> {
+    pSpace.id = uuidv4();
     return new Observable(() => {
-      this.fireDatabase.list('organizations').push({
-        id: pOrganization.id,
-        orgName: pOrganization.orgName,
-        address: pOrganization.address,
-        phoneNumber: pOrganization.phoneNumber
+      this.fireDatabase.list('spaces').push({
+        id: pSpace.id,
+        name: pSpace.name
       })
     });
-  }
-
-  updateOrganization(pNode: string, id: string, 
-    organization: Partial<Organization>): Observable<void> {
-    return from(this.fireDatabase.object(`${pNode}/${id}`)
-    .update(organization));
   }
 
   addTask(pTask: Task): Observable<any> {
@@ -157,7 +150,7 @@ export class BaseService {
         id: pUser.id,
         userName: pUser.userName,
         email: pUser.email,
-        organizations: pUser.organizations
+        spaces: pUser.spaces
       })
     });
   }

@@ -3,6 +3,7 @@ import { User } from '../../../dto/user';
 import { BaseService } from '../../../services/service';
 import { getEnumSelector } from '../../../utilities/utilites';
 import { UserRoleEnum } from '../../../enums/user-roles';
+import { Organization } from '../../../dto/organization';
 
 @Component({
   selector: 'user-manage',
@@ -14,12 +15,20 @@ export class UserManageComponent {
   @Input() user = new User();
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
+  organizations: Organization[] = [];
 
   constructor(private service: BaseService){
 
   }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('loggedUser'));
+    this.service
+      .fetchDataByNode('users', user.id)
+      .subscribe((pResponse) => {
+        this.user = pResponse;
+        this.organizations = pResponse.organizations ? pResponse.organizations : []; 
+      });
     
   }
 
@@ -28,6 +37,10 @@ export class UserManageComponent {
       const modal = document.getElementById('userAddModal');
       modal.style.display = 'block';
     }
+  }
+
+  compareById( pObj1: any, pObj2: any ): boolean {
+    return pObj1 && pObj2 && pObj1[ 'id' ] === pObj2[ 'id' ];
   }
 
   closeWindow(): void {

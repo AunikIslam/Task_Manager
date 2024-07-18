@@ -9,17 +9,13 @@
             <thead>
                 <tr>
                     <th class="text-center">Name</th>
-                    <th class="text-center">Phone</th>
-                    <th class="text-center">Address</th>
                     <th class="text-center">&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @for (item of organizations; track item) {
+                    @for (item of spaces; track item) {
                         <tr>
-                            <td class="text-center">{{item.orgName}}</td>
-                            <td class="text-center">{{item.phoneNumber}}</td>
-                            <td class="text-center">{{item.address}}</td>
+                            <td class="text-center">{{item.name}}</td>
                             <td class="text-center">
                                 <button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Actions</button>
                             <mat-menu #menu="matMenu">
@@ -31,8 +27,8 @@
                 </tbody>
         </table>
     </div>
-    <organization-manage
+    <!-- <organization-manage
     [user]="user"
     [shouldOpenManageWindow]="openOrganizationManageWindow"
-    [organization]="organization"></organization-manage>
+    [organization]="organization"></organization-manage> -->
 </div>
