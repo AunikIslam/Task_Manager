@@ -29,7 +29,7 @@ export class SpaceListComponent {
       });
   }
 
-  getOrganization(pSpace: Space): void {
+  getSpace(pSpace: Space): void {
     this.openManageWindow = true;
     pSpace ? this.space = JSON.parse(JSON.stringify(pSpace)) : this.space = new Space();
   }
