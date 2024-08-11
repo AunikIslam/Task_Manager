@@ -32,13 +32,13 @@
               formControlName="password"
             />
           </div>
-          <!-- <a [routerLink]="['/auth', 'sign-up']" class="open-account-text">
+          <a [routerLink]="['/sign-up']" class="open-account-text">
             Don't have an account? Create one!
-          </a> -->
+          </a>
           <button (click)="login()" [ngStyle]="{ width: '100%' }" [disabled]="loginForm.invalid" class="mt-4" mat-raised-button color="primary">Log In</button>
         </form>
         <button (click)="googleLogIn()" [ngStyle]="{ width: '100%' }" class="google-sign-up-button" mat-raised-button color="white">
-          Sign In with Google
+          <img src="assets/images/google_icon.png"/> Sign In with Google
         </button>
       </div>
     </div>

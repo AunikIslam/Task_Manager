@@ -2,7 +2,7 @@
     <div class="login-container">
       <div class="org-title">{{ displayText }}{{cursor}}</div>
       <div class="login-card">
-        <div class="title mb-4">Log In</div>
+        <div class="title mb-4">Sign Up</div>
         <form
           name="loginForm"
           [formGroup]="loginForm"
@@ -43,10 +43,10 @@
               formControlName="password"
             />
           </div>
-          <a [routerLink]="['sign-up']" class="open-account-text">
-            Don't have an account? Create one!
+          <a [routerLink]="['/login']" class="open-account-text">
+            Already have an account? Log In!
           </a>
-          <button [ngStyle]="{ width: '100%' }" [disabled]="loginForm.invalid" class="mt-4" mat-raised-button color="primary">Log In</button>
+          <button [ngStyle]="{ width: '100%' }" [disabled]="loginForm.invalid" class="mt-4" mat-raised-button color="primary">Sign Up</button>
         </form>
       </div>
     </div>
