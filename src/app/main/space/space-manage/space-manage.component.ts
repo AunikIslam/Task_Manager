@@ -4,7 +4,7 @@ import { User } from '../../../dto/user';
 import { BaseService } from '../../../services/service';
 
 @Component({
-  selector: 'app-space-manage',
+  selector: 'space-manage',
   templateUrl: './space-manage.component.html',
   styleUrl: './space-manage.component.css'
 })

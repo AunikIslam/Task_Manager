@@ -4,6 +4,7 @@ import { BaseService } from '../../../services/service';
 import { getEnumSelector } from '../../../utilities/utilites';
 import { UserRoleEnum } from '../../../enums/user-roles';
 import { Organization } from '../../../dto/organization';
+import { Space } from '../../../dto/space';
 
 @Component({
   selector: 'user-manage',
@@ -15,7 +16,7 @@ export class UserManageComponent {
   @Input() user = new User();
   @Output() openConditionChangeListener = new EventEmitter<boolean>();
   @Output() reloadData = new EventEmitter<boolean>();
-  organizations: Organization[] = [];
+  spaces: Space[] = [];
 
   constructor(private service: BaseService){
 
@@ -27,7 +28,7 @@ export class UserManageComponent {
       .fetchDataByNode('users', user.id)
       .subscribe((pResponse) => {
         this.user = pResponse;
-        this.organizations = pResponse.organizations ? pResponse.organizations : []; 
+        this.spaces = pResponse.spaces ? pResponse.spaces : []; 
       });
     
   }

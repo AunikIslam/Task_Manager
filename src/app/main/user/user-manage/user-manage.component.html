@@ -17,7 +17,7 @@
                 [(ngModel)]="user.email"
                 placeholder="Enter User Email"
             />
-            <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
+            <!-- <mat-form-field class="custom-form-field" appearance="outline" fxFlex="100">
                 <mat-select placeholder="Organization" name="Organization" [(ngModel)]="user.organizations" 
                 [compareWith]="compareById" multiple>
                     <mat-option *ngFor="let organization of organizations" [value]="organization">
@@ -25,7 +25,7 @@
                     </mat-option>
                 </mat-select>
                 <mat-error>Year is required!</mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
             <div class="button" (click)="user.id ? updateUser() : createUser()">{{user.id ? 'Edit' : 'Add'}}</div>
         </div>
     </div>

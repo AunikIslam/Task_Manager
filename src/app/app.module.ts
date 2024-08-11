@@ -27,6 +27,7 @@ import { UserRolePipe } from './pipe/user-role-pipe';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SpaceListComponent } from './main/space/space-list/space-list.component';
 import { SpaceManageComponent } from './main/space/space-manage/space-manage.component';
+import { SignUpComponent } from './main/authentication/sign-up/sign-up.component';
 
 const routes: Routes = [
     {
@@ -48,12 +49,16 @@ const routes: Routes = [
     {
       path: 'users',
       component: UserListComponent
+    },
+    {
+      path: 'sign-up',
+      component: SignUpComponent
     }
 ];
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, 
-    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe, UserRolePipe, SpaceListComponent, SpaceManageComponent],
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe, UserRolePipe, SpaceListComponent, SpaceManageComponent, SignUpComponent],
   imports: [
     CommonModule,
     HttpClientModule,
