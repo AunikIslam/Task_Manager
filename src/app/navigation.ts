@@ -25,8 +25,8 @@ export const navigations = [
         url: '/spaces'
     },
     {
-        id: 'SPACES',
-        name: 'New Tasks List',
-        url: '/new-tasks-list'
+        id: 'NEW_TASK_LIST',
+        name: 'New Task List',
+        url: '/new-task-list'
     }
 ]

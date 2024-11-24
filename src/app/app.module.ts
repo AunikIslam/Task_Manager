@@ -56,7 +56,7 @@ const routes: Routes = [
       component: SignUpComponent
     },
     {
-      path: 'new-tasks-list',
+      path: 'new-task-list',
       component: TaskV2ListComponent
     }
 ];
