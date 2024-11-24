@@ -28,6 +28,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SpaceListComponent } from './main/space/space-list/space-list.component';
 import { SpaceManageComponent } from './main/space/space-manage/space-manage.component';
 import { SignUpComponent } from './main/authentication/sign-up/sign-up.component';
+import { TaskV2ListComponent } from './main/task-v2/task-v2-list/task-v2-list.component';
 
 const routes: Routes = [
     {
@@ -53,12 +54,17 @@ const routes: Routes = [
     {
       path: 'sign-up',
       component: SignUpComponent
+    },
+    {
+      path: 'new-tasks-list',
+      component: TaskV2ListComponent
     }
 ];
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, 
-    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, PriorityPipe, UserRolePipe, SpaceListComponent, SpaceManageComponent, SignUpComponent],
+    TaskListComponent, TaskManageComponent, UserListComponent, UserManageComponent, StatusPipe, 
+    PriorityPipe, UserRolePipe, SpaceListComponent, SpaceManageComponent, SignUpComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -68,7 +74,8 @@ const routes: Routes = [
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule, 
+    TaskV2ListComponent,
     RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
