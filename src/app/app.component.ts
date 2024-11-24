@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if(event.url.includes('login')) {
+        if(event.url.includes('login') || event.url.includes('sign-up')) {
           this.showToolbar = false;
         } else {
           this.showToolbar = true;
