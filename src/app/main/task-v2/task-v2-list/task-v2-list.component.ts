@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TaskV2 } from '../../../dto/task-v2';
 import { selectedTasks } from '../../../state-management/selectors';
-import { addTask, loadTask } from '../../../state-management/actions';
+import { addTask, loadRedditContents, loadTask } from '../../../state-management/actions';
 import { SharedModule } from '../../../shared-module';
 
 @Component({
@@ -21,7 +21,8 @@ export class TaskV2ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    const contents: any[] = [];
+    this.store.dispatch(loadRedditContents({contents}));
   }
 
   addNewTask() {

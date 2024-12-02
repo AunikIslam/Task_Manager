@@ -9,14 +9,22 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Router } from '@angular/router';
 import { getDatabase, ref, query, orderByChild, equalTo, get, update } from 'firebase/database';
 import { Space } from '../dto/space';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 @Injectable({ providedIn: 'root' })
 export class BaseService {
   constructor(
     private fireDatabase: AngularFireDatabase,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
+
+  getData(apiUrl: string, data?: any): Observable<any> {
+    return this.http.get(apiUrl, {
+      params: new HttpParams ({fromObject: data})
+    });
+  }
 
   googleSignIn() {
     const auth = getAuth();
@@ -26,7 +34,6 @@ export class BaseService {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(user);
       return { user, token }; // Return an object containing the user and token
     })
     .catch((error) => {
